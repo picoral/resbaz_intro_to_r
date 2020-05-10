@@ -1,0 +1,1369 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\usepackage{hyperref}
+\hypersetup{
+            pdftitle={ResBaz Arizona 2020 Intro to R},
+            pdfauthor={Adriana Picoral},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Fix footnotes in tables (requires footnote package)
+\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{ResBaz Arizona 2020 Intro to R}
+\author{Adriana Picoral}
+\date{2020-05-10}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{before-we-start}{%
+\chapter{Before we start}\label{before-we-start}}
+
+This lesson plan was created based on many other resources that are already available online, mainly Claudia A Engel's ``Introduction to R'' bookdown available at \url{https://cengel.github.io/R-intro} and ``Programming with R'' from Software Carpentry available at \url{http://swcarpentry.github.io/r-novice-inflammation}.
+
+\hypertarget{installing-r-and-r-studio}{%
+\section{Installing R and R Studio}\label{installing-r-and-r-studio}}
+
+If you are running your R code in your computer, you need to install both R and RStudio. Alternatively, you can create a free account at \url{http://rstudio.cloud} and run your R code in the cloud. Either way, we will be using the same IDE (i.e., RStudio).
+
+\leavevmode\hypertarget{explanation}{}%
+What's an \textbf{IDE}? IDE stands for \textbf{i}ntegrated \textbf{d}evelopment \textbf{e}nvironment, and its goal is to facilitate coding by integrating a \textbf{text editor}, a \textbf{console} and other tools into one window.
+
+\hypertarget{ive-never-installed-r-and-rstudio-in-my-computer-or-im-not-sure-i-have-r-and-rstudio-installed-in-my-computer}{%
+\subsection{I've never installed R and RStudio in my computer OR I'm not sure I have R and RStudio installed in my computer}\label{ive-never-installed-r-and-rstudio-in-my-computer-or-im-not-sure-i-have-r-and-rstudio-installed-in-my-computer}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download and install R from \url{https://cran.r-project.org}
+\item
+  Download and install RStudio from \url{https://rstudio.com/products/rstudio/download/\#download}
+\end{enumerate}
+
+\hypertarget{i-already-have-r-and-rstudio-installed}{%
+\subsection{I already have R and RStudio installed}\label{i-already-have-r-and-rstudio-installed}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Open RStudio
+\item
+  Check your R version by entering \texttt{sessionInfo()} on your console.
+\item
+  The latest release for R was April 24, 2020 (R version 4.0.0, 2020-04-24, Arbor Day). If your R version is older than the most recent version, please follow step 1 in the previous section to update R.
+\item
+  Check your RStudio version, if your version is older than Version 1.2.5042, please follow step 2 in the previous section to update RStudio.
+\end{enumerate}
+
+\leavevmode\hypertarget{explanation}{}%
+How often should I update R and RStudio? Always make sure that you have the latest version of R, RStudio, and the packages you're using in your code to ensure you are not running into bugs that are caused by having older versions installed in your computer.
+
+When \href{https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/4}{asked}, \href{https://community.rstudio.com/u/jennybryan}{Jenny Bryan} summarizes the importance of keeping your system up-to-date saying that ``You will always eventually have a reason that you must update. So you can either do that very infrequently, suffer with old versions in the middle, and experience great pain at update. Or admit that maintaining your system is a normal ongoing activity, and do it more often.''
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+You can ensure your packages are also up-to-date by clicking on ``Tools'' on your RStudio top menu bar, and selecting ``Check for Packages Updates\ldots{}''
+
+\hypertarget{parti}{%
+\chapter{Intro to R Part I}\label{parti}}
+
+\hypertarget{getting-to-know-your-ide}{%
+\section{Getting to know your IDE}\label{getting-to-know-your-ide}}
+
+\leavevmode\hypertarget{explanation}{}%
+What's an \textbf{IDE}? IDE stands for \textbf{i}ntegrated \textbf{d}evelopment \textbf{e}nvironment, and its goal is to facilitate coding by integrating a \textbf{text editor}, a \textbf{console} and other tools into one window.
+
+We are using RStudio as our IDE for this workshop. You can either download and install R and RStudio on your computer (for instructions on how to do so, see the ``Before we start'' section) or create a free account at \url{http://rstudio.cloud} and run your R code in the cloud.
+
+In this part of the workshop we will start an R project and situating ourselves around our IDE.
+
+\leavevmode\hypertarget{explanation}{}%
+Why create a RStudio project? RStudio projects make it easier to keep your projects organized, since each project has their own working directory, workspace, history, and source documents.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Start a new R project
+\item
+  Create a new R script
+\item
+  Save that R script as 01-basic\_operations
+\end{enumerate}
+
+\leavevmode\hypertarget{question}{}%
+Take a moment to look around your IDE. What are the main panes on the RStudio interface. What are the 4 main areas of the interface? Can you guess what each area is for?
+
+\hypertarget{operations-and-objects}{%
+\section{Operations and Objects}\label{operations-and-objects}}
+
+Let's start by using R as a calculator. On your \textbf{console} type \texttt{3\ +\ 3} and hit enter.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\leavevmode\hypertarget{question}{}%
+What symbols do we use for all basic operations (addition, subtraction, multiplication, and division)?
+What happens if you type \texttt{3\ +}?
+
+Let's save our calculation into an object, by using the assignment symbol \texttt{\textless{}-}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum_result <-}\StringTok{ }\DecValTok{3} \OperatorTok{+}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{question}{}%
+Take a moment to look around your IDE once again. What has changed?
+
+Now, let's use this new object in our calculation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sum_result }\OperatorTok{+}\StringTok{ }\DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\leavevmode\hypertarget{question}{}%
+Take a moment to look around your IDE once again. Has anything changed?
+
+What else can we do with an object?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{(sum_result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+R is primarily a functional programming language. That means that there pre-programmed functions in base R such as \texttt{class()} and that you can also write your own functions (more on that later).
+
+Type \texttt{?class} in your console and hit enter to get more information about this function.
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Create an object called \texttt{daisys\_age} that holds the number 8.
+Multiply \texttt{daisys\_age} by 4 and save the results in another object called \texttt{daisys\_human\_age}
+
+Imagine I had multiple pets (unfortunately, that is not true, Daisy is my only pet). I can create a \textbf{vector} to hold multiple numbers representing the age of each of my pets.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets_ages <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{question}{}%
+Take a moment to look around your IDE once again. What has changed?
+
+What is the class of the object \texttt{my\_pets\_ages}?
+
+Now let's multiply this vector by 4.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets_ages }\OperatorTok{*}\StringTok{ }\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 32  8 24 12  4
+\end{verbatim}
+
+Errors are pretty common when writing code in any programming language, so be ready to read error messages and debug your code. Let's insert a typing error in our previous code:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets_ages <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{6}\NormalTok{, }\StringTok{'3'}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Try to multiply \texttt{my\_pets\_ages} by 4. What happens? How can we debug our code to find out what is causing the error?
+
+\hypertarget{dataframes}{%
+\section{Dataframes}\label{dataframes}}
+
+You will rarely work with individual numeric values, or even individual numeric vectors. Often, we have information organized in dataframes, which is R's version of a spreadsheet.
+
+Let's go back to my imaginary pet's ages (make sure you have the correct vector in your global environment).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets_ages <-}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(my_pets_ages)}
+\end{Highlighting}
+\end{Shaded}
+
+We will now create a vector of strings or characters that holds my imaginary pets' names (we have to be careful to keep the same order then the \texttt{my\_pets\_ages} vector).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets_names <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{'Daisy'}\NormalTok{, }\StringTok{'Violet'}\NormalTok{, }\StringTok{'Lily'}\NormalTok{, }\StringTok{'Iris'}\NormalTok{, }\StringTok{'Poppy'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Let's now create a dataframe that contains info about my pets.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{name =}\NormalTok{ my_pets_names,}\DataTypeTok{age =}\NormalTok{ my_pets_ages)}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+There's a number of functions you can run on dataframes. Try running the following functions on \texttt{my\_pets}:
+
+\begin{itemize}
+\item
+  summary()
+\item
+  nrow()
+\item
+  ncol()
+\item
+  dim()
+\end{itemize}
+
+What other functions can/do you think/know of?
+
+\hypertarget{slicing-you-dataframe}{%
+\section{Slicing you dataframe}\label{slicing-you-dataframe}}
+
+There are different ways you can slice or subset your dataframe.
+
+You can use indices for rows and columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\DecValTok{1}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name age
+## 1 Daisy   8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"  "Violet" "Lily"   "Iris"   "Poppy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+\end{verbatim}
+
+You can use a column name or a row name instead of an index.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[, }\StringTok{'age'}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8 2 6 3 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\StringTok{'1'}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name age
+## 1 Daisy   8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\StringTok{'1'}\NormalTok{, }\StringTok{'age'}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+Or you can use \texttt{\$} to retrieve values from a column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets}\OperatorTok{$}\NormalTok{age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8 2 6 3 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets}\OperatorTok{$}\NormalTok{age[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 8
+\end{verbatim}
+
+You can also use comparisons to filter your dataframe
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get index with which() function}
+\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# use which() inside dataframe indexing my_pets[row_number, column_number]}
+\NormalTok{my_pets[}\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\DecValTok{8}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    name age
+## 1 Daisy   8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\DecValTok{8}\NormalTok{), }\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\DecValTok{8}\NormalTok{), }\StringTok{'name'}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets[}\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\DecValTok{8}\NormalTok{),]}\OperatorTok{$}\NormalTok{name}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+\end{verbatim}
+
+\hypertarget{adding-new-variables-i.e.-columns-to-your-dataframe}{%
+\section{Adding new variables (i.e., columns) to your dataframe}\label{adding-new-variables-i.e.-columns-to-your-dataframe}}
+
+So far the \texttt{my\_pets} dataframe has two columns: name and age.
+
+Let's add a third column with the pets' ages in human years. For that, we are going to use \texttt{\$} on with a variable (or column) name that does not exist in our dataframe yet. We will then assign to this variable the value in the \texttt{age} column multiplied by 4.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets}\OperatorTok{$}\NormalTok{human_years <-}\StringTok{ }\NormalTok{my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{*}\StringTok{ }\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{question}{}%
+Inspect the new \texttt{my\_pets} dataframe. What dimensions does it have now? How could you get a list of just the human years values in the data frame?
+
+\hypertarget{descriptive-stats-on-dataframes}{%
+\section{Descriptive stats on dataframes}\label{descriptive-stats-on-dataframes}}
+
+Let's explore some functions for descriptive statistics.
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Try running the following functions on \texttt{my\_pets\$age} and \texttt{my\_pets\$human\_years}:
+
+\begin{itemize}
+\item
+  mean()
+\item
+  sd()
+\item
+  median()
+\item
+  max()
+\item
+  min()
+\item
+  range()
+\end{itemize}
+
+What other functions can/do you think/know of?
+
+\hypertarget{for-loops}{%
+\section{For loops}\label{for-loops}}
+
+Besides implementing operations on an entire column (e.g., \texttt{my\_pets\$age} * 4 multiplies each value in the \texttt{age} column of \texttt{my\_pets} dataframe by 4), you can loop through each element in your dataframe column using a for loop.
+
+There are two ways of writing a for loop in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (pet }\ControlFlowTok{in}\NormalTok{ my_pets}\OperatorTok{$}\NormalTok{name) \{}
+  \KeywordTok{print}\NormalTok{(pet)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+## [1] "Violet"
+## [1] "Lily"
+## [1] "Iris"
+## [1] "Poppy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)) \{}
+  \KeywordTok{print}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{name[i])}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+## [1] "Violet"
+## [1] "Lily"
+## [1] "Iris"
+## [1] "Poppy"
+\end{verbatim}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Write a \texttt{for} loop to print each pets' name and age. You can use the function \texttt{paste()} to combined the three variables into one line.
+
+Remember you can enter \texttt{?paste} in your console to get information on how to use this function.
+
+\hypertarget{if-blocks}{%
+\section{If blocks}\label{if-blocks}}
+
+Maybe calculating a pet's age in human years is more complex than just multiplying it by 4 (or 7?). The \href{https://www.akc.org/expert-advice/health/how-to-calculate-dog-years-to-human-years/}{American Kennel club} has the following on how to calculate dog years to human years:
+
+\begin{itemize}
+\tightlist
+\item
+  15 human years equals the first year of a medium-sized dog's life.
+\item
+  Year two for a dog equals about nine years for a human.
+\item
+  And after that, each human year would be approximately five years for a dog.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)) \{}
+  \CommentTok{# store dog i age in an object}
+\NormalTok{  this_dogs_age <-}\StringTok{ }\NormalTok{my_pets}\OperatorTok{$}\NormalTok{age[i]}
+  
+  \CommentTok{# 15 human years equals the first year of a medium-sized dog's life.}
+\NormalTok{  this_dogs_human_years <-}\StringTok{ }\DecValTok{15}
+  
+  \CommentTok{# if the pet is two years or older}
+  \ControlFlowTok{if}\NormalTok{ (this_dogs_age }\OperatorTok{>=}\StringTok{ }\DecValTok{2}\NormalTok{) \{}
+    \CommentTok{# Year two for a dog equals about nine years for a human.}
+\NormalTok{    this_dogs_human_years <-}\StringTok{ }\NormalTok{this_dogs_human_years }\OperatorTok{+}\StringTok{ }\DecValTok{9}
+    
+    \CommentTok{# And after that, each human year would be approximately five years for a dog.}
+\NormalTok{    partial_dog_age <-}\StringTok{ }\NormalTok{(this_dogs_age }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{5}
+    
+    \CommentTok{# sum up both parts}
+\NormalTok{    this_dogs_human_years <-}\StringTok{ }\NormalTok{this_dogs_human_years }\OperatorTok{+}\StringTok{ }\NormalTok{partial_dog_age}
+\NormalTok{  \} }
+  \CommentTok{# add the final calculation to the dataframe}
+\NormalTok{  my_pets}\OperatorTok{$}\NormalTok{human_years2[i] <-}\StringTok{ }\NormalTok{this_dogs_human_years}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{functions}{%
+\section{Functions}\label{functions}}
+
+Functions are extremely useful to make your R code more organized and reusable.
+
+The main structure of a function is \texttt{object\_name\ \textless{}-\ function()\ code\_here},Here's an example of a simple function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{human_years <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(pets_age) \{}
+
+  \CommentTok{# 15 human years equals the first year of a medium-sized dog's life.}
+\NormalTok{  human_years <-}\StringTok{ }\DecValTok{15}
+  
+  \CommentTok{# if the pet is two years or older}
+  \ControlFlowTok{if}\NormalTok{ (pets_age }\OperatorTok{>=}\StringTok{ }\DecValTok{2}\NormalTok{) \{}
+    \CommentTok{# Year two for a dog equals about nine years for a human.}
+    \CommentTok{# And after that, each human year would be approximately five years for a dog.}
+\NormalTok{    human_years <-}\StringTok{ }\NormalTok{human_years }\OperatorTok{+}\StringTok{ }\DecValTok{9} \OperatorTok{+}\StringTok{ }\NormalTok{(pets_age }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{5}
+    
+\NormalTok{  \} }
+  \KeywordTok{return}\NormalTok{(human_years)}
+\NormalTok{\}}
+
+\KeywordTok{human_years}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 29
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_pets}\OperatorTok{$}\NormalTok{human_years2 <-}\StringTok{ }\KeywordTok{sapply}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age, human_years)}
+\end{Highlighting}
+\end{Shaded}
+
+Read more on writing your own functions: \href{https://nicercode.github.io/guides/functions/}{Nice R Code - Functions}
+
+\hypertarget{putting-it-all-together}{%
+\section{Putting it all together}\label{putting-it-all-together}}
+
+Read and run the code below that provides some info on our \texttt{my\_pets} dataframe.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get number of rows for the for loop}
+\NormalTok{how_many_pets <-}\StringTok{ }\KeywordTok{nrow}\NormalTok{(my_pets)}
+
+\CommentTok{# a for loop to print info on each pet}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\NormalTok{how_many_pets)) \{}
+  \CommentTok{# paste info with some prose}
+\NormalTok{  info_to_print <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{name[i], }\StringTok{'is'}\NormalTok{,}
+\NormalTok{                         my_pets}\OperatorTok{$}\NormalTok{age[i], }
+                         \StringTok{'years old in pet years, which is equivalent to'}\NormalTok{,}
+\NormalTok{                         my_pets}\OperatorTok{$}\NormalTok{human_years[i], }\StringTok{'human years.'}\NormalTok{)}
+  \CommentTok{# print out the info for pet i}
+  \KeywordTok{print}\NormalTok{(info_to_print)}
+\NormalTok{\} }\CommentTok{# end of for loop to print info on each pet}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy is 8 years old in pet years, which is equivalent to 32 human years."
+## [1] "Violet is 2 years old in pet years, which is equivalent to 8 human years."
+## [1] "Lily is 6 years old in pet years, which is equivalent to 24 human years."
+## [1] "Iris is 3 years old in pet years, which is equivalent to 12 human years."
+## [1] "Poppy is 1 years old in pet years, which is equivalent to 4 human years."
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# print name of oldest pet}
+\CommentTok{## get max age}
+\NormalTok{max_age <-}\StringTok{ }\KeywordTok{max}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age)}
+
+\CommentTok{## get index of max_age}
+\NormalTok{which_max_age <-}\StringTok{ }\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\NormalTok{max_age)}
+
+\CommentTok{## print info for which_max_age}
+\NormalTok{oldest_pet <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{name[which_max_age], }\StringTok{'is the oldest pet.'}\NormalTok{)}
+\KeywordTok{print}\NormalTok{(oldest_pet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy is the oldest pet."
+\end{verbatim}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Add to the code above, to print the following information:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  the name of the youngest pet
+\item
+  the mean pet age
+\item
+  any other info you find relevant
+\end{enumerate}
+
+\hypertarget{note-on-coding-style}{%
+\section{Note on coding style}\label{note-on-coding-style}}
+
+Coding style refers to how you name your objects and functions, how you comment your code, how you use spacing throughout your code, etc. If your coding style is consistent, your code is easier to read and easier to debug as a result. Here's some guides, so you can develop your own coding style:
+
+\begin{itemize}
+\item
+  \href{https://style.tidyverse.org}{The tidyverse style guide}
+\item
+  \href{http://adv-r.had.co.nz/Style.html}{Hadley Wickham's Advance R coding style}
+\item
+  \href{https://google.github.io/styleguide/Rguide.html}{Google's R Style Guide}
+\end{itemize}
+
+\hypertarget{partii}{%
+\chapter{Intro to R Part II}\label{partii}}
+
+\hypertarget{installing-and-using-packages-in-r}{%
+\section{Installing and using packages in R}\label{installing-and-using-packages-in-r}}
+
+There are a lot of R packages out here (check the Comprehensive R Archive Network, i.e., CRAN, for a \href{https://cran.r-project.org/web/packages/available_packages_by_name.html}{full list}). That is one of the beautiful things about R, anyone can create an R package to share their code (check out the workshop on how to create your own R package later this week).
+
+Open your RStudio (if you haven't attended the first part of this workshop, please check the ``Before we start'' section for instructions on how to download and/or update R and RStudio).
+
+The function to install packages in R is \texttt{install.packages()}. We will be working with \href{https://www.tidyverse.org/}{TidyVerse} today, which is a collection of R packages carefully designed for data science.
+
+Let's install tidyverse (this may take a while).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+You need to install any package only once (remember to check for new package versions and to keep your packages updated). However, with every new R session, you need to load the packages you are going to use by using the \texttt{library()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{explanation}{}%
+Note that when calling the \texttt{install.packages()} function you need to enter the package name between quotation marks (e.g., ``tidyverse''). When you call the \texttt{library()} function, you don't use quotation marks (e.g., tidyverse).
+
+\hypertarget{acquire-data}{%
+\section{Acquire data}\label{acquire-data}}
+
+First, we will download the data we are going to be using today.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Go to \url{https://www.kaggle.com/neuromusic/avocado-prices/data} and click on the ``Download (2 MB)'' button
+\item
+  Find the zip file (avocado-prices.zip) you downloaded and unzip it
+\item
+  On the same level as your project folder, add a ``new folder'' called ``data''
+\item
+  Move, copy, or upload the data file (avocado.csv) to the ``data'' folder
+\end{enumerate}
+
+\hypertarget{load-data-in-r}{%
+\section{Load data in R}\label{load-data-in-r}}
+
+For this workshop, we will be using data from \href{https://www.kaggle.com/}{kaggle}. In the previous section, you created a \emph{data} folder in your project folder, which should contain the \emph{avocado.csv} data file.
+
+Although we are working within an R project, which sets the working directory automatically for you, it's good practice to check what folder you are working from by calling the \texttt{getwd()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/adriana/Desktop/workshops/resbaz_2020/intro_to_R"
+\end{verbatim}
+
+You can also list the contents of your \texttt{data} folder by using the \texttt{dir()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dir}\NormalTok{(}\StringTok{"data"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "avocado.csv"
+\end{verbatim}
+
+We will use the \texttt{read\_csv()} function from the \texttt{readr} package (which is part of \texttt{tidyverse}) to read data in.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data <-}\StringTok{ }\KeywordTok{read_csv}\NormalTok{(}\StringTok{"data/avocado.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Missing column names filled in: 'X1' [1]
+\end{verbatim}
+
+\begin{verbatim}
+## Parsed with column specification:
+## cols(
+##   X1 = col_double(),
+##   Date = col_date(format = ""),
+##   AveragePrice = col_double(),
+##   `Total Volume` = col_double(),
+##   `4046` = col_double(),
+##   `4225` = col_double(),
+##   `4770` = col_double(),
+##   `Total Bags` = col_double(),
+##   `Small Bags` = col_double(),
+##   `Large Bags` = col_double(),
+##   `XLarge Bags` = col_double(),
+##   type = col_character(),
+##   year = col_double(),
+##   region = col_character()
+## )
+\end{verbatim}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+\textbf{Reading warnings} - R often prints out warnings in red (these are not always errors). What information did you get when loading your data?
+
+\hypertarget{inspect-your-data}{%
+\section{Inspect your data}\label{inspect-your-data}}
+
+Now, let's inspect our dataframe. As usual, there are multiple ways of inspecting your data.
+
+Here's one of my favorites:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get an overview of the data frame}
+\KeywordTok{glimpse}\NormalTok{(avocado_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 18,249
+## Columns: 14
+## $ X1             <dbl> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15...
+## $ Date           <date> 2015-12-27, 2015-12-20, 2015-12-13, 2015-12-06, 201...
+## $ AveragePrice   <dbl> 1.33, 1.35, 0.93, 1.08, 1.28, 1.26, 0.99, 0.98, 1.02...
+## $ `Total Volume` <dbl> 64236.62, 54876.98, 118220.22, 78992.15, 51039.60, 5...
+## $ `4046`         <dbl> 1036.74, 674.28, 794.70, 1132.00, 941.48, 1184.27, 1...
+## $ `4225`         <dbl> 54454.85, 44638.81, 109149.67, 71976.41, 43838.39, 4...
+## $ `4770`         <dbl> 48.16, 58.33, 130.50, 72.58, 75.78, 43.61, 93.26, 80...
+## $ `Total Bags`   <dbl> 8696.87, 9505.56, 8145.35, 5811.16, 6183.95, 6683.91...
+## $ `Small Bags`   <dbl> 8603.62, 9408.07, 8042.21, 5677.40, 5986.26, 6556.47...
+## $ `Large Bags`   <dbl> 93.25, 97.49, 103.14, 133.76, 197.69, 127.44, 122.05...
+## $ `XLarge Bags`  <dbl> 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00...
+## $ type           <chr> "conventional", "conventional", "conventional", "con...
+## $ year           <dbl> 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015...
+## $ region         <chr> "Albany", "Albany", "Albany", "Albany", "Albany", "A...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(avocado_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        X1             Date             AveragePrice    Total Volume     
+##  Min.   : 0.00   Min.   :2015-01-04   Min.   :0.440   Min.   :      85  
+##  1st Qu.:10.00   1st Qu.:2015-10-25   1st Qu.:1.100   1st Qu.:   10839  
+##  Median :24.00   Median :2016-08-14   Median :1.370   Median :  107377  
+##  Mean   :24.23   Mean   :2016-08-13   Mean   :1.406   Mean   :  850644  
+##  3rd Qu.:38.00   3rd Qu.:2017-06-04   3rd Qu.:1.660   3rd Qu.:  432962  
+##  Max.   :52.00   Max.   :2018-03-25   Max.   :3.250   Max.   :62505647  
+##       4046               4225               4770           Total Bags      
+##  Min.   :       0   Min.   :       0   Min.   :      0   Min.   :       0  
+##  1st Qu.:     854   1st Qu.:    3009   1st Qu.:      0   1st Qu.:    5089  
+##  Median :    8645   Median :   29061   Median :    185   Median :   39744  
+##  Mean   :  293008   Mean   :  295155   Mean   :  22840   Mean   :  239639  
+##  3rd Qu.:  111020   3rd Qu.:  150207   3rd Qu.:   6243   3rd Qu.:  110783  
+##  Max.   :22743616   Max.   :20470573   Max.   :2546439   Max.   :19373134  
+##    Small Bags         Large Bags       XLarge Bags           type          
+##  Min.   :       0   Min.   :      0   Min.   :     0.0   Length:18249      
+##  1st Qu.:    2849   1st Qu.:    127   1st Qu.:     0.0   Class :character  
+##  Median :   26363   Median :   2648   Median :     0.0   Mode  :character  
+##  Mean   :  182195   Mean   :  54338   Mean   :  3106.4                     
+##  3rd Qu.:   83338   3rd Qu.:  22029   3rd Qu.:   132.5                     
+##  Max.   :13384587   Max.   :5719097   Max.   :551693.7                     
+##       year         region         
+##  Min.   :2015   Length:18249      
+##  1st Qu.:2015   Class :character  
+##  Median :2016   Mode  :character  
+##  Mean   :2016                     
+##  3rd Qu.:2017                     
+##  Max.   :2018
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# check some of the categorical variables}
+\KeywordTok{unique}\NormalTok{(avocado_data}\OperatorTok{$}\NormalTok{type)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "conventional" "organic"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{unique}\NormalTok{(avocado_data}\OperatorTok{$}\NormalTok{region)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "Albany"              "Atlanta"             "BaltimoreWashington"
+##  [4] "Boise"               "Boston"              "BuffaloRochester"   
+##  [7] "California"          "Charlotte"           "Chicago"            
+## [10] "CincinnatiDayton"    "Columbus"            "DallasFtWorth"      
+## [13] "Denver"              "Detroit"             "GrandRapids"        
+## [16] "GreatLakes"          "HarrisburgScranton"  "HartfordSpringfield"
+## [19] "Houston"             "Indianapolis"        "Jacksonville"       
+## [22] "LasVegas"            "LosAngeles"          "Louisville"         
+## [25] "MiamiFtLauderdale"   "Midsouth"            "Nashville"          
+## [28] "NewOrleansMobile"    "NewYork"             "Northeast"          
+## [31] "NorthernNewEngland"  "Orlando"             "Philadelphia"       
+## [34] "PhoenixTucson"       "Pittsburgh"          "Plains"             
+## [37] "Portland"            "RaleighGreensboro"   "RichmondNorfolk"    
+## [40] "Roanoke"             "Sacramento"          "SanDiego"           
+## [43] "SanFrancisco"        "Seattle"             "SouthCarolina"      
+## [46] "SouthCentral"        "Southeast"           "Spokane"            
+## [49] "StLouis"             "Syracuse"            "Tampa"              
+## [52] "TotalUS"             "West"                "WestTexNewMexico"
+\end{verbatim}
+
+\leavevmode\hypertarget{question}{}%
+Do you know any other ways of checking your data?
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Which variables are numeric? Which are categorical?
+
+What functions do you remember from Part I? Run these functions (e.g., \texttt{mean()}) on your numeric variables.
+
+\hypertarget{explore-your-data}{%
+\section{Explore your data}\label{explore-your-data}}
+
+We will be using the package \texttt{dplyr} (which is also part of \texttt{tidyverse}) to do an exploratory analysis of our data.
+
+The package \texttt{dplyr} most used function is \texttt{\%\textgreater{}\%} (called the pipe). The pipe allows you to ``pipe'' (or redirect) objects into functions. (hint: use ctrl+shift+m or cmd+shift+m as a shortcut for typing \texttt{\%\textgreater{}\%}).
+
+Here's how to pipe the \texttt{avocado\_data} object into the \texttt{summary()} function
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# get an overview of the data frame}
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{summary}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        X1             Date             AveragePrice    Total Volume     
+##  Min.   : 0.00   Min.   :2015-01-04   Min.   :0.440   Min.   :      85  
+##  1st Qu.:10.00   1st Qu.:2015-10-25   1st Qu.:1.100   1st Qu.:   10839  
+##  Median :24.00   Median :2016-08-14   Median :1.370   Median :  107377  
+##  Mean   :24.23   Mean   :2016-08-13   Mean   :1.406   Mean   :  850644  
+##  3rd Qu.:38.00   3rd Qu.:2017-06-04   3rd Qu.:1.660   3rd Qu.:  432962  
+##  Max.   :52.00   Max.   :2018-03-25   Max.   :3.250   Max.   :62505647  
+##       4046               4225               4770           Total Bags      
+##  Min.   :       0   Min.   :       0   Min.   :      0   Min.   :       0  
+##  1st Qu.:     854   1st Qu.:    3009   1st Qu.:      0   1st Qu.:    5089  
+##  Median :    8645   Median :   29061   Median :    185   Median :   39744  
+##  Mean   :  293008   Mean   :  295155   Mean   :  22840   Mean   :  239639  
+##  3rd Qu.:  111020   3rd Qu.:  150207   3rd Qu.:   6243   3rd Qu.:  110783  
+##  Max.   :22743616   Max.   :20470573   Max.   :2546439   Max.   :19373134  
+##    Small Bags         Large Bags       XLarge Bags           type          
+##  Min.   :       0   Min.   :      0   Min.   :     0.0   Length:18249      
+##  1st Qu.:    2849   1st Qu.:    127   1st Qu.:     0.0   Class :character  
+##  Median :   26363   Median :   2648   Median :     0.0   Mode  :character  
+##  Mean   :  182195   Mean   :  54338   Mean   :  3106.4                     
+##  3rd Qu.:   83338   3rd Qu.:  22029   3rd Qu.:   132.5                     
+##  Max.   :13384587   Max.   :5719097   Max.   :551693.7                     
+##       year         region         
+##  Min.   :2015   Length:18249      
+##  1st Qu.:2015   Class :character  
+##  Median :2016   Mode  :character  
+##  Mean   :2016                     
+##  3rd Qu.:2017                     
+##  Max.   :2018
+\end{verbatim}
+
+The pipe allows us to apply multiple functions to the same object.
+
+Let's start by selecting one column in our data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(type)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 18,249 x 1
+##    type        
+##    <chr>       
+##  1 conventional
+##  2 conventional
+##  3 conventional
+##  4 conventional
+##  5 conventional
+##  6 conventional
+##  7 conventional
+##  8 conventional
+##  9 conventional
+## 10 conventional
+## # ... with 18,239 more rows
+\end{verbatim}
+
+Now let's add another pipe to get unique values in this column.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{select}\NormalTok{(type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{unique}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 1
+##   type        
+##   <chr>       
+## 1 conventional
+## 2 organic
+\end{verbatim}
+
+\hypertarget{group-by-count}{%
+\subsection{Group by + count}\label{group-by-count}}
+
+One of the most useful pipe combinations is \texttt{group\_by()} and \texttt{count()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+## # Groups:   type [2]
+##   type             n
+##   <chr>        <int>
+## 1 conventional  9126
+## 2 organic       9123
+\end{verbatim}
+
+We can add more variables to the \texttt{group\_by()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(region, type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{count}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 108 x 3
+## # Groups:   region, type [108]
+##    region              type             n
+##    <chr>               <chr>        <int>
+##  1 Albany              conventional   169
+##  2 Albany              organic        169
+##  3 Atlanta             conventional   169
+##  4 Atlanta             organic        169
+##  5 BaltimoreWashington conventional   169
+##  6 BaltimoreWashington organic        169
+##  7 Boise               conventional   169
+##  8 Boise               organic        169
+##  9 Boston              conventional   169
+## 10 Boston              organic        169
+## # ... with 98 more rows
+\end{verbatim}
+
+\hypertarget{group-by-summarise}{%
+\subsection{Group by + summarise}\label{group-by-summarise}}
+
+We can also use the \texttt{summarise()} function after \texttt{group\_by()}. Inside \texttt{summarise()} you can use other functions such as \texttt{sum()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(region, type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{total_volume =} \KeywordTok{sum}\NormalTok{(}\StringTok{`}\DataTypeTok{Total Volume}\StringTok{`}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 108 x 3
+## # Groups:   region [54]
+##    region              type         total_volume
+##    <chr>               <chr>               <dbl>
+##  1 Albany              conventional    15700611.
+##  2 Albany              organic           367188.
+##  3 Atlanta             conventional    86661392.
+##  4 Atlanta             organic          1943727.
+##  5 BaltimoreWashington conventional   130745575.
+##  6 BaltimoreWashington organic          3968344.
+##  7 Boise               conventional    14000540.
+##  8 Boise               organic           412647.
+##  9 Boston              conventional    94900438.
+## 10 Boston              organic          2373547.
+## # ... with 98 more rows
+\end{verbatim}
+
+Let's add another pipe and arrange the results by \texttt{total\_volume}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(region) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{total_volume =} \KeywordTok{sum}\NormalTok{(}\StringTok{`}\DataTypeTok{Total Volume}\StringTok{`}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(total_volume)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 54 x 2
+##    region           total_volume
+##    <chr>                   <dbl>
+##  1 Syracuse            10942668.
+##  2 Boise               14413188.
+##  3 Spokane             15565275.
+##  4 Albany              16067800.
+##  5 Louisville          16097002.
+##  6 Pittsburgh          18806346.
+##  7 BuffaloRochester    22962470.
+##  8 Roanoke             25042011.
+##  9 Jacksonville        28790005.
+## 10 Columbus            29993361.
+## # ... with 44 more rows
+\end{verbatim}
+
+\hypertarget{mutate}{%
+\section{Mutate}\label{mutate}}
+
+You can use \texttt{mutate()} to add a new column to your data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(region, type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{total_type_volume =} \KeywordTok{sum}\NormalTok{(}\StringTok{`}\DataTypeTok{Total Volume}\StringTok{`}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total_volume =} \KeywordTok{sum}\NormalTok{(total_type_volume))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 108 x 4
+## # Groups:   region [54]
+##    region              type         total_type_volume total_volume
+##    <chr>               <chr>                    <dbl>        <dbl>
+##  1 Albany              conventional         15700611.    16067800.
+##  2 Albany              organic                367188.    16067800.
+##  3 Atlanta             conventional         86661392.    88605119.
+##  4 Atlanta             organic               1943727.    88605119.
+##  5 BaltimoreWashington conventional        130745575.   134713919.
+##  6 BaltimoreWashington organic               3968344.   134713919.
+##  7 Boise               conventional         14000540.    14413188.
+##  8 Boise               organic                412647.    14413188.
+##  9 Boston              conventional         94900438.    97273985.
+## 10 Boston              organic               2373547.    97273985.
+## # ... with 98 more rows
+\end{verbatim}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Use \texttt{group\_by()}, \texttt{summarise()}, and \texttt{mutate()} to print out the volume percentage of \emph{conventional} and \emph{organic} avocado types per region. (hint: add a new variable inside \texttt{mutate()} that is the result of total\_type\_volume divided by total\_volume)
+
+We've been just printing our results to our console. Let's save the results are a new data frame. When assigning your \texttt{group\_by()} results to a new object, make sure to add \texttt{ungroup()} as the last pipe (this will save you headaches in the future).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{volume_type_region <-}\StringTok{ }\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(region, type) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{total_type_volume =} \KeywordTok{sum}\NormalTok{(}\StringTok{`}\DataTypeTok{Total Volume}\StringTok{`}\NormalTok{)) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{total_volume =} \KeywordTok{sum}\NormalTok{(total_type_volume),}
+         \DataTypeTok{type_percentage =}\NormalTok{ total_type_volume}\OperatorTok{/}\NormalTok{total_volume) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE \#1
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Inspect your new data frame.
+\item
+  Base on \texttt{volume\_type\_region} calculate the mean and standard deviation of type percentage per type (i.e., conventional vs.~organic). \textbf{Question}: What is the percentage of conventional vs.~organic avocados sold in each region?
+\end{enumerate}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE \#2
+
+Calculate the average avocado price for each type in each region.
+
+\hypertarget{filter-your-data}{%
+\section{Filter your data}\label{filter-your-data}}
+
+One of the ``regions'' in our data is \texttt{TotalUS} which is not really a specific region, but the sum of all the other regions. To calculate averages per year, for example, we need to filter our the \texttt{TotalUS} region.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{filter}\NormalTok{(region }\OperatorTok{!=}\StringTok{ 'TotalUS'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 17,911 x 14
+##       X1 Date       AveragePrice `Total Volume` `4046` `4225` `4770`
+##    <dbl> <date>            <dbl>          <dbl>  <dbl>  <dbl>  <dbl>
+##  1     0 2015-12-27         1.33         64237.  1037. 5.45e4   48.2
+##  2     1 2015-12-20         1.35         54877.   674. 4.46e4   58.3
+##  3     2 2015-12-13         0.93        118220.   795. 1.09e5  130. 
+##  4     3 2015-12-06         1.08         78992.  1132  7.20e4   72.6
+##  5     4 2015-11-29         1.28         51040.   941. 4.38e4   75.8
+##  6     5 2015-11-22         1.26         55980.  1184. 4.81e4   43.6
+##  7     6 2015-11-15         0.99         83454.  1369. 7.37e4   93.3
+##  8     7 2015-11-08         0.98        109428.   704. 1.02e5   80  
+##  9     8 2015-11-01         1.02         99811.  1022. 8.73e4   85.3
+## 10     9 2015-10-25         1.07         74339.   842. 6.48e4  113  
+## # ... with 17,901 more rows, and 7 more variables: `Total Bags` <dbl>, `Small
+## #   Bags` <dbl>, `Large Bags` <dbl>, `XLarge Bags` <dbl>, type <chr>,
+## #   year <dbl>, region <chr>
+\end{verbatim}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Calculate the mean type average per year. Remember to filter out the \texttt{TotalUS} region. \textbf{Question}: What is the percentage of conventional vs.~organic avocados sold each year?
+
+\hypertarget{conditionally-mutate-your-data}{%
+\section{Conditionally mutate your data}\label{conditionally-mutate-your-data}}
+
+You can use the \texttt{if\_else()} function inside \texttt{mutate()} to create a new variable that is conditional on an existing variable in your data frame.
+
+Let's create a new column in our data frame, indicating whether the average price per avocado is higher than \$1.50.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data <-}\StringTok{ }\NormalTok{avocado_data }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{expensive =} \KeywordTok{if_else}\NormalTok{(AveragePrice }\OperatorTok{>}\StringTok{ }\FloatTok{1.50}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can calculate the percentage of expensive avocados by using the \texttt{mean()} function on our new \texttt{expensive} variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mean}\NormalTok{(avocado_data}\OperatorTok{$}\NormalTok{expensive)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3787605
+\end{verbatim}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Calculate the percentage of expensive avocados per region.
+
+\hypertarget{pivot-your-data}{%
+\section{Pivot your data}\label{pivot-your-data}}
+
+Numerical column names refer to price lookup codes.
+
+4046: small Hass
+
+4225: large Hass
+
+4770: extra large Hass
+
+First, let's slice our data, to remove \texttt{Total\ Volume}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data_v2 <-}\StringTok{ }\NormalTok{avocado_data }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(Date, region, }\StringTok{`}\DataTypeTok{4046}\StringTok{`}\NormalTok{, }\StringTok{`}\DataTypeTok{4225}\StringTok{`}\NormalTok{, }\StringTok{`}\DataTypeTok{4770}\StringTok{`}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Inspect your data.
+
+Now, let's pivot our data frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avocado_data_longer <-}\StringTok{ }\NormalTok{avocado_data_v2 }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{pivot_longer}\NormalTok{(}\DataTypeTok{cols =} \KeywordTok{c}\NormalTok{(}\StringTok{`}\DataTypeTok{4046}\StringTok{`}\NormalTok{, }\StringTok{`}\DataTypeTok{4225}\StringTok{`}\NormalTok{, }\StringTok{`}\DataTypeTok{4770}\StringTok{`}\NormalTok{), }
+               \DataTypeTok{names_to =} \StringTok{"lookup_code"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Summarize volume of each avocado type per region. Which region buys a larger portion of large avocados?
+
+\bibliography{book.bib,packages.bib}
+
+\end{document}

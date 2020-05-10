@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ResBaz Arizona 2020 Intro to R</title>
+  <meta name="description" content="This is the lesson plan for the two Intro do R workshop sections held at ResBaz Arizona on May 18 and 19, 2020." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="ResBaz Arizona 2020 Intro to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the lesson plan for the two Intro do R workshop sections held at ResBaz Arizona on May 18 and 19, 2020." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ResBaz Arizona 2020 Intro to R" />
+  
+  <meta name="twitter:description" content="This is the lesson plan for the two Intro do R workshop sections held at ResBaz Arizona on May 18 and 19, 2020." />
+  
+
+<meta name="author" content="Adriana Picoral" />
+
+
+<meta name="date" content="2020-05-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="parti.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ResBaz Arizona 2020 - Intro to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before we start</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R Studio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#ive-never-installed-r-and-rstudio-in-my-computer-or-im-not-sure-i-have-r-and-rstudio-installed-in-my-computer"><i class="fa fa-check"></i><b>1.1.1</b> I’ve never installed R and RStudio in my computer OR I’m not sure I have R and RStudio installed in my computer</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#i-already-have-r-and-rstudio-installed"><i class="fa fa-check"></i><b>1.1.2</b> I already have R and RStudio installed</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parti.html"><a href="parti.html"><i class="fa fa-check"></i><b>2</b> Intro to R Part I</a><ul>
+<li class="chapter" data-level="2.1" data-path="parti.html"><a href="parti.html#getting-to-know-your-ide"><i class="fa fa-check"></i><b>2.1</b> Getting to know your IDE</a></li>
+<li class="chapter" data-level="2.2" data-path="parti.html"><a href="parti.html#operations-and-objects"><i class="fa fa-check"></i><b>2.2</b> Operations and Objects</a></li>
+<li class="chapter" data-level="2.3" data-path="parti.html"><a href="parti.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="parti.html"><a href="parti.html#slicing-you-dataframe"><i class="fa fa-check"></i><b>2.4</b> Slicing you dataframe</a></li>
+<li class="chapter" data-level="2.5" data-path="parti.html"><a href="parti.html#adding-new-variables-i.e.-columns-to-your-dataframe"><i class="fa fa-check"></i><b>2.5</b> Adding new variables (i.e., columns) to your dataframe</a></li>
+<li class="chapter" data-level="2.6" data-path="parti.html"><a href="parti.html#descriptive-stats-on-dataframes"><i class="fa fa-check"></i><b>2.6</b> Descriptive stats on dataframes</a></li>
+<li class="chapter" data-level="2.7" data-path="parti.html"><a href="parti.html#for-loops"><i class="fa fa-check"></i><b>2.7</b> For loops</a></li>
+<li class="chapter" data-level="2.8" data-path="parti.html"><a href="parti.html#if-blocks"><i class="fa fa-check"></i><b>2.8</b> If blocks</a></li>
+<li class="chapter" data-level="2.9" data-path="parti.html"><a href="parti.html#functions"><i class="fa fa-check"></i><b>2.9</b> Functions</a></li>
+<li class="chapter" data-level="2.10" data-path="parti.html"><a href="parti.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.10</b> Putting it all together</a></li>
+<li class="chapter" data-level="2.11" data-path="parti.html"><a href="parti.html#note-on-coding-style"><i class="fa fa-check"></i><b>2.11</b> Note on coding style</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="partii.html"><a href="partii.html"><i class="fa fa-check"></i><b>3</b> Intro to R Part II</a><ul>
+<li class="chapter" data-level="3.1" data-path="partii.html"><a href="partii.html#installing-and-using-packages-in-r"><i class="fa fa-check"></i><b>3.1</b> Installing and using packages in R</a></li>
+<li class="chapter" data-level="3.2" data-path="partii.html"><a href="partii.html#acquire-data"><i class="fa fa-check"></i><b>3.2</b> Acquire data</a></li>
+<li class="chapter" data-level="3.3" data-path="partii.html"><a href="partii.html#load-data-in-r"><i class="fa fa-check"></i><b>3.3</b> Load data in R</a></li>
+<li class="chapter" data-level="3.4" data-path="partii.html"><a href="partii.html#inspect-your-data"><i class="fa fa-check"></i><b>3.4</b> Inspect your data</a></li>
+<li class="chapter" data-level="3.5" data-path="partii.html"><a href="partii.html#explore-your-data"><i class="fa fa-check"></i><b>3.5</b> Explore your data</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="partii.html"><a href="partii.html#group-by-count"><i class="fa fa-check"></i><b>3.5.1</b> Group by + count</a></li>
+<li class="chapter" data-level="3.5.2" data-path="partii.html"><a href="partii.html#group-by-summarise"><i class="fa fa-check"></i><b>3.5.2</b> Group by + summarise</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="partii.html"><a href="partii.html#mutate"><i class="fa fa-check"></i><b>3.6</b> Mutate</a></li>
+<li class="chapter" data-level="3.7" data-path="partii.html"><a href="partii.html#filter-your-data"><i class="fa fa-check"></i><b>3.7</b> Filter your data</a></li>
+<li class="chapter" data-level="3.8" data-path="partii.html"><a href="partii.html#conditionally-mutate-your-data"><i class="fa fa-check"></i><b>3.8</b> Conditionally mutate your data</a></li>
+<li class="chapter" data-level="3.9" data-path="partii.html"><a href="partii.html#pivot-your-data"><i class="fa fa-check"></i><b>3.9</b> Pivot your data</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ResBaz Arizona 2020 Intro to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">ResBaz Arizona 2020 Intro to R</h1>
+<p class="author"><em>Adriana Picoral</em></p>
+<p class="date"><em>2020-05-10</em></p>
+</div>
+<div id="before-we-start" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Before we start</h1>
+<p>This lesson plan was created based on many other resources that are already available online, mainly Claudia A Engel’s “Introduction to R” bookdown available at <a href="https://cengel.github.io/R-intro" class="uri">https://cengel.github.io/R-intro</a> and “Programming with R” from Software Carpentry available at <a href="http://swcarpentry.github.io/r-novice-inflammation" class="uri">http://swcarpentry.github.io/r-novice-inflammation</a>.</p>
+<div id="installing-r-and-r-studio" class="section level2">
+<h2><span class="header-section-number">1.1</span> Installing R and R Studio</h2>
+<p>If you are running your R code in your computer, you need to install both R and RStudio. Alternatively, you can create a free account at <a href="http://rstudio.cloud" class="uri">http://rstudio.cloud</a> and run your R code in the cloud. Either way, we will be using the same IDE (i.e., RStudio).</p>
+<div id="explanation" class="explanation">
+<p>What’s an <strong>IDE</strong>? IDE stands for <strong>i</strong>ntegrated <strong>d</strong>evelopment <strong>e</strong>nvironment, and its goal is to facilitate coding by integrating a <strong>text editor</strong>, a <strong>console</strong> and other tools into one window.</p>
+</div>
+<div id="ive-never-installed-r-and-rstudio-in-my-computer-or-im-not-sure-i-have-r-and-rstudio-installed-in-my-computer" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> I’ve never installed R and RStudio in my computer OR I’m not sure I have R and RStudio installed in my computer</h3>
+<ol style="list-style-type: decimal">
+<li>Download and install R from <a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a></li>
+<li>Download and install RStudio from <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a></li>
+</ol>
+</div>
+<div id="i-already-have-r-and-rstudio-installed" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> I already have R and RStudio installed</h3>
+<ol style="list-style-type: decimal">
+<li>Open RStudio</li>
+<li>Check your R version by entering <code>sessionInfo()</code> on your console.</li>
+<li>The latest release for R was April 24, 2020 (R version 4.0.0, 2020-04-24, Arbor Day). If your R version is older than the most recent version, please follow step 1 in the previous section to update R.</li>
+<li>Check your RStudio version, if your version is older than Version 1.2.5042, please follow step 2 in the previous section to update RStudio.</li>
+</ol>
+<div id="explanation" class="explanation">
+<p>How often should I update R and RStudio? Always make sure that you have the latest version of R, RStudio, and the packages you’re using in your code to ensure you are not running into bugs that are caused by having older versions installed in your computer.</p>
+<p>When <a href="https://community.rstudio.com/t/should-i-update-all-my-r-packages-frequently-yes-no-why/5856/4">asked</a>, <a href="https://community.rstudio.com/u/jennybryan">Jenny Bryan</a> summarizes the importance of keeping your system up-to-date saying that “You will always eventually have a reason that you must update. So you can either do that very infrequently, suffer with old versions in the middle, and experience great pain at update. Or admit that maintaining your system is a normal ongoing activity, and do it more often.”</p>
+</div>
+<hr />
+<p>You can ensure your packages are also up-to-date by clicking on “Tools” on your RStudio top menu bar, and selecting “Check for Packages Updates…”</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="parti.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["intro_to_R.pdf", "intro_to_R.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>

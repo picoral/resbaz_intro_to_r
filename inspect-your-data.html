@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Inspect your data | ResBaz Arizona 2020 Intro to R</title>
+  <meta name="description" content="This is the lesson plan for the two Intro do R workshop sections held at ResBaz Arizona on May 18 and 19, 2020." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Inspect your data | ResBaz Arizona 2020 Intro to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is the lesson plan for the two Intro do R workshop sections held at ResBaz Arizona on May 18 and 19, 2020." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Inspect your data | ResBaz Arizona 2020 Intro to R" />
+  
+  <meta name="twitter:description" content="This is the lesson plan for the two Intro do R workshop sections held at ResBaz Arizona on May 18 and 19, 2020." />
+  
+
+<meta name="author" content="Adriana Picoral" />
+
+
+<meta name="date" content="2020-05-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="partii.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ResBaz Arizona 2020 - Intro to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Before we start</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#installing-r-and-r-studio"><i class="fa fa-check"></i><b>1.1</b> Installing R and R Studio</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#ive-never-installed-r-and-rstudio-in-my-computer-or-im-not-sure-i-have-r-and-rstudio-installed-in-my-computer"><i class="fa fa-check"></i><b>1.1.1</b> I’ve never installed R and RStudio in my computer OR I’m not sure I have R and RStudio installed in my computer</a></li>
+<li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#i-already-have-r-and-rstudio-installed"><i class="fa fa-check"></i><b>1.1.2</b> I already have R and RStudio installed</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="parti.html"><a href="parti.html"><i class="fa fa-check"></i><b>2</b> Intro to R Part I</a><ul>
+<li class="chapter" data-level="2.1" data-path="parti.html"><a href="parti.html#getting-to-know-your-ide"><i class="fa fa-check"></i><b>2.1</b> Getting to know your IDE</a></li>
+<li class="chapter" data-level="2.2" data-path="parti.html"><a href="parti.html#operations-and-objects"><i class="fa fa-check"></i><b>2.2</b> Operations and Objects</a></li>
+<li class="chapter" data-level="2.3" data-path="parti.html"><a href="parti.html#dataframes"><i class="fa fa-check"></i><b>2.3</b> Dataframes</a></li>
+<li class="chapter" data-level="2.4" data-path="parti.html"><a href="parti.html#slicing-you-dataframe"><i class="fa fa-check"></i><b>2.4</b> Slicing you dataframe</a></li>
+<li class="chapter" data-level="2.5" data-path="parti.html"><a href="parti.html#adding-new-variables-i.e.-columns-to-your-dataframe"><i class="fa fa-check"></i><b>2.5</b> Adding new variables (i.e., columns) to your dataframe</a></li>
+<li class="chapter" data-level="2.6" data-path="parti.html"><a href="parti.html#descriptive-stats-on-dataframes"><i class="fa fa-check"></i><b>2.6</b> Descriptive stats on dataframes</a></li>
+<li class="chapter" data-level="2.7" data-path="parti.html"><a href="parti.html#for-loops"><i class="fa fa-check"></i><b>2.7</b> For loops</a></li>
+<li class="chapter" data-level="2.8" data-path="parti.html"><a href="parti.html#if-blocks"><i class="fa fa-check"></i><b>2.8</b> If blocks</a></li>
+<li class="chapter" data-level="2.9" data-path="parti.html"><a href="parti.html#functions"><i class="fa fa-check"></i><b>2.9</b> Functions</a></li>
+<li class="chapter" data-level="2.10" data-path="parti.html"><a href="parti.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.10</b> Putting it all together</a></li>
+<li class="chapter" data-level="2.11" data-path="parti.html"><a href="parti.html#note-on-coding-style"><i class="fa fa-check"></i><b>2.11</b> Note on coding style</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="partii.html"><a href="partii.html"><i class="fa fa-check"></i><b>3</b> Intro to R Part II</a><ul>
+<li class="chapter" data-level="3.1" data-path="partii.html"><a href="partii.html#installing-and-using-packages-in-r"><i class="fa fa-check"></i><b>3.1</b> Installing and using packages in R</a></li>
+<li class="chapter" data-level="3.2" data-path="partii.html"><a href="partii.html#acquire-data"><i class="fa fa-check"></i><b>3.2</b> Acquire data</a></li>
+<li class="chapter" data-level="3.3" data-path="partii.html"><a href="partii.html#load-data-in-r"><i class="fa fa-check"></i><b>3.3</b> Load data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="inspect-your-data.html"><a href="inspect-your-data.html"><i class="fa fa-check"></i><b>4</b> Inspect your data</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ResBaz Arizona 2020 Intro to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inspect-your-data" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Inspect your data</h1>
+<p>Now, let’s inspect our dataframe. As usual, there are multiple ways of inspecting your data.</p>
+<p>Here’s one of my favorites:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># get an overview of the data frame</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">glimpse</span>(avocado_data)</a></code></pre></div>
+<pre><code>## Rows: 18,249
+## Columns: 14
+## $ X1             &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+## $ Date           &lt;date&gt; 2015-12-27, 2015-12-20, 2015-12-13, 2015-12-06, 2015-…
+## $ AveragePrice   &lt;dbl&gt; 1.33, 1.35, 0.93, 1.08, 1.28, 1.26, 0.99, 0.98, 1.02, …
+## $ `Total Volume` &lt;dbl&gt; 64236.62, 54876.98, 118220.22, 78992.15, 51039.60, 559…
+## $ `4046`         &lt;dbl&gt; 1036.74, 674.28, 794.70, 1132.00, 941.48, 1184.27, 136…
+## $ `4225`         &lt;dbl&gt; 54454.85, 44638.81, 109149.67, 71976.41, 43838.39, 480…
+## $ `4770`         &lt;dbl&gt; 48.16, 58.33, 130.50, 72.58, 75.78, 43.61, 93.26, 80.0…
+## $ `Total Bags`   &lt;dbl&gt; 8696.87, 9505.56, 8145.35, 5811.16, 6183.95, 6683.91, …
+## $ `Small Bags`   &lt;dbl&gt; 8603.62, 9408.07, 8042.21, 5677.40, 5986.26, 6556.47, …
+## $ `Large Bags`   &lt;dbl&gt; 93.25, 97.49, 103.14, 133.76, 197.69, 127.44, 122.05, …
+## $ `XLarge Bags`  &lt;dbl&gt; 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, …
+## $ type           &lt;chr&gt; &quot;conventional&quot;, &quot;conventional&quot;, &quot;conventional&quot;, &quot;conve…
+## $ year           &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, …
+## $ region         &lt;chr&gt; &quot;Albany&quot;, &quot;Albany&quot;, &quot;Albany&quot;, &quot;Albany&quot;, &quot;Albany&quot;, &quot;Alb…</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">summary</span>(avocado_data)</a></code></pre></div>
+<pre><code>##        X1             Date             AveragePrice    Total Volume     
+##  Min.   : 0.00   Min.   :2015-01-04   Min.   :0.440   Min.   :      85  
+##  1st Qu.:10.00   1st Qu.:2015-10-25   1st Qu.:1.100   1st Qu.:   10839  
+##  Median :24.00   Median :2016-08-14   Median :1.370   Median :  107377  
+##  Mean   :24.23   Mean   :2016-08-13   Mean   :1.406   Mean   :  850644  
+##  3rd Qu.:38.00   3rd Qu.:2017-06-04   3rd Qu.:1.660   3rd Qu.:  432962  
+##  Max.   :52.00   Max.   :2018-03-25   Max.   :3.250   Max.   :62505647  
+##       4046               4225               4770           Total Bags      
+##  Min.   :       0   Min.   :       0   Min.   :      0   Min.   :       0  
+##  1st Qu.:     854   1st Qu.:    3009   1st Qu.:      0   1st Qu.:    5089  
+##  Median :    8645   Median :   29061   Median :    185   Median :   39744  
+##  Mean   :  293008   Mean   :  295155   Mean   :  22840   Mean   :  239639  
+##  3rd Qu.:  111020   3rd Qu.:  150207   3rd Qu.:   6243   3rd Qu.:  110783  
+##  Max.   :22743616   Max.   :20470573   Max.   :2546439   Max.   :19373134  
+##    Small Bags         Large Bags       XLarge Bags           type          
+##  Min.   :       0   Min.   :      0   Min.   :     0.0   Length:18249      
+##  1st Qu.:    2849   1st Qu.:    127   1st Qu.:     0.0   Class :character  
+##  Median :   26363   Median :   2648   Median :     0.0   Mode  :character  
+##  Mean   :  182195   Mean   :  54338   Mean   :  3106.4                     
+##  3rd Qu.:   83338   3rd Qu.:  22029   3rd Qu.:   132.5                     
+##  Max.   :13384587   Max.   :5719097   Max.   :551693.7                     
+##       year         region         
+##  Min.   :2015   Length:18249      
+##  1st Qu.:2015   Class :character  
+##  Median :2016   Mode  :character  
+##  Mean   :2016                     
+##  3rd Qu.:2017                     
+##  Max.   :2018</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="co"># check some of the categorical variables</span></a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"><span class="kw">unique</span>(avocado_data<span class="op">$</span>type)</a></code></pre></div>
+<pre><code>## [1] &quot;conventional&quot; &quot;organic&quot;</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">unique</span>(avocado_data<span class="op">$</span>region)</a></code></pre></div>
+<pre><code>##  [1] &quot;Albany&quot;              &quot;Atlanta&quot;             &quot;BaltimoreWashington&quot;
+##  [4] &quot;Boise&quot;               &quot;Boston&quot;              &quot;BuffaloRochester&quot;   
+##  [7] &quot;California&quot;          &quot;Charlotte&quot;           &quot;Chicago&quot;            
+## [10] &quot;CincinnatiDayton&quot;    &quot;Columbus&quot;            &quot;DallasFtWorth&quot;      
+## [13] &quot;Denver&quot;              &quot;Detroit&quot;             &quot;GrandRapids&quot;        
+## [16] &quot;GreatLakes&quot;          &quot;HarrisburgScranton&quot;  &quot;HartfordSpringfield&quot;
+## [19] &quot;Houston&quot;             &quot;Indianapolis&quot;        &quot;Jacksonville&quot;       
+## [22] &quot;LasVegas&quot;            &quot;LosAngeles&quot;          &quot;Louisville&quot;         
+## [25] &quot;MiamiFtLauderdale&quot;   &quot;Midsouth&quot;            &quot;Nashville&quot;          
+## [28] &quot;NewOrleansMobile&quot;    &quot;NewYork&quot;             &quot;Northeast&quot;          
+## [31] &quot;NorthernNewEngland&quot;  &quot;Orlando&quot;             &quot;Philadelphia&quot;       
+## [34] &quot;PhoenixTucson&quot;       &quot;Pittsburgh&quot;          &quot;Plains&quot;             
+## [37] &quot;Portland&quot;            &quot;RaleighGreensboro&quot;   &quot;RichmondNorfolk&quot;    
+## [40] &quot;Roanoke&quot;             &quot;Sacramento&quot;          &quot;SanDiego&quot;           
+## [43] &quot;SanFrancisco&quot;        &quot;Seattle&quot;             &quot;SouthCarolina&quot;      
+## [46] &quot;SouthCentral&quot;        &quot;Southeast&quot;           &quot;Spokane&quot;            
+## [49] &quot;StLouis&quot;             &quot;Syracuse&quot;            &quot;Tampa&quot;              
+## [52] &quot;TotalUS&quot;             &quot;West&quot;                &quot;WestTexNewMexico&quot;</code></pre>
+<div id="question" class="question">
+<p>Do you know any other ways of checking your data?</p>
+</div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="partii.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["intro_to_R.pdf", "intro_to_R.epub"],
+"toc": {
+"collapse": "subsection"
+},
+"search": true
+});
+});
+</script>
+
+</body>
+
+</html>
