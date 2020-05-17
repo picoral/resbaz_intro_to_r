@@ -24,7 +24,7 @@
 <meta name="author" content="Adriana Picoral" />
 
 
-<meta name="date" content="2020-05-10" />
+<meta name="date" content="2020-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -189,9 +189,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Open your RStudio (if you haven’t attended the first part of this workshop, please check the “Before we start” section for instructions on how to download and/or update R and RStudio).</p>
 <p>The function to install packages in R is <code>install.packages()</code>. We will be working with <a href="https://www.tidyverse.org/">TidyVerse</a> today, which is a collection of R packages carefully designed for data science.</p>
 <p>Let’s install tidyverse (this may take a while).</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
 <p>You need to install any package only once (remember to check for new package versions and to keep your packages updated). However, with every new R session, you need to load the packages you are going to use by using the <code>library()</code> function.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <pre><code>## ── Attaching packages ─────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
 ## ✓ tibble  3.0.1     ✓ dplyr   0.8.5
@@ -218,13 +218,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.3</span> Load data in R</h2>
 <p>For this workshop, we will be using data from <a href="https://www.kaggle.com/">kaggle</a>. In the previous section, you created a <em>data</em> folder in your project folder, which should contain the <em>avocado.csv</em> data file.</p>
 <p>Although we are working within an R project, which sets the working directory automatically for you, it’s good practice to check what folder you are working from by calling the <code>getwd()</code> function.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">getwd</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">getwd</span>()</a></code></pre></div>
 <pre><code>## [1] &quot;/Users/adriana/Desktop/workshops/resbaz_2020/intro_to_R&quot;</code></pre>
 <p>You can also list the contents of your <code>data</code> folder by using the <code>dir()</code> function.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">dir</span>(<span class="st">&quot;data&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1"><span class="kw">dir</span>(<span class="st">&quot;data&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;avocado.csv&quot;</code></pre>
 <p>We will use the <code>read_csv()</code> function from the <code>readr</code> package (which is part of <code>tidyverse</code>) to read data in.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1">avocado_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/avocado.csv&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" data-line-number="1">avocado_data &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/avocado.csv&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Missing column names filled in: &#39;X1&#39; [1]</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
@@ -252,8 +252,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.4</span> Inspect your data</h2>
 <p>Now, let’s inspect our dataframe. As usual, there are multiple ways of inspecting your data.</p>
 <p>Here’s one of my favorites:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="co"># get an overview of the data frame</span></a>
-<a class="sourceLine" id="cb66-2" data-line-number="2"><span class="kw">glimpse</span>(avocado_data)</a></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co"># get an overview of the data frame</span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="kw">glimpse</span>(avocado_data)</a></code></pre></div>
 <pre><code>## Rows: 18,249
 ## Columns: 14
 ## $ X1             &lt;dbl&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
@@ -270,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ type           &lt;chr&gt; &quot;conventional&quot;, &quot;conventional&quot;, &quot;conventional&quot;, &quot;conve…
 ## $ year           &lt;dbl&gt; 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, 2015, …
 ## $ region         &lt;chr&gt; &quot;Albany&quot;, &quot;Albany&quot;, &quot;Albany&quot;, &quot;Albany&quot;, &quot;Albany&quot;, &quot;Alb…</code></pre>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">summary</span>(avocado_data)</a></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">summary</span>(avocado_data)</a></code></pre></div>
 <pre><code>##        X1             Date             AveragePrice    Total Volume     
 ##  Min.   : 0.00   Min.   :2015-01-04   Min.   :0.440   Min.   :      85  
 ##  1st Qu.:10.00   1st Qu.:2015-10-25   1st Qu.:1.100   1st Qu.:   10839  
@@ -299,10 +299,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :2016                     
 ##  3rd Qu.:2017                     
 ##  Max.   :2018</code></pre>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co"># check some of the categorical variables</span></a>
-<a class="sourceLine" id="cb70-2" data-line-number="2"><span class="kw">unique</span>(avocado_data<span class="op">$</span>type)</a></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1"><span class="co"># check some of the categorical variables</span></a>
+<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="kw">unique</span>(avocado_data<span class="op">$</span>type)</a></code></pre></div>
 <pre><code>## [1] &quot;conventional&quot; &quot;organic&quot;</code></pre>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">unique</span>(avocado_data<span class="op">$</span>region)</a></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1"><span class="kw">unique</span>(avocado_data<span class="op">$</span>region)</a></code></pre></div>
 <pre><code>##  [1] &quot;Albany&quot;              &quot;Atlanta&quot;             &quot;BaltimoreWashington&quot;
 ##  [4] &quot;Boise&quot;               &quot;Boston&quot;              &quot;BuffaloRochester&quot;   
 ##  [7] &quot;California&quot;          &quot;Charlotte&quot;           &quot;Chicago&quot;            
@@ -336,9 +336,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We will be using the package <code>dplyr</code> (which is also part of <code>tidyverse</code>) to do an exploratory analysis of our data.</p>
 <p>The package <code>dplyr</code> most used function is <code>%&gt;%</code> (called the pipe). The pipe allows you to “pipe” (or redirect) objects into functions. (hint: use ctrl+shift+m or cmd+shift+m as a shortcut for typing <code>%&gt;%</code>).</p>
 <p>Here’s how to pipe the <code>avocado_data</code> object into the <code>summary()</code> function</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="co"># get an overview of the data frame</span></a>
-<a class="sourceLine" id="cb74-2" data-line-number="2">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb74-3" data-line-number="3"><span class="st">  </span><span class="kw">summary</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="co"># get an overview of the data frame</span></a>
+<a class="sourceLine" id="cb84-2" data-line-number="2">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="st">  </span><span class="kw">summary</span>()</a></code></pre></div>
 <pre><code>##        X1             Date             AveragePrice    Total Volume     
 ##  Min.   : 0.00   Min.   :2015-01-04   Min.   :0.440   Min.   :      85  
 ##  1st Qu.:10.00   1st Qu.:2015-10-25   1st Qu.:1.100   1st Qu.:   10839  
@@ -369,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Max.   :2018</code></pre>
 <p>The pipe allows us to apply multiple functions to the same object.</p>
 <p>Let’s start by selecting one column in our data.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(type)</a></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(type)</a></code></pre></div>
 <pre><code>## # A tibble: 18,249 x 1
 ##    type        
 ##    &lt;chr&gt;       
@@ -386,9 +386,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 conventional
 ## # … with 18,239 more rows</code></pre>
 <p>Now let’s add another pipe to get unique values in this column.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb78-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb78-3" data-line-number="3"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 1
 ##   type        
 ##   &lt;chr&gt;       
@@ -397,9 +397,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="group-by-count" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Group by + count</h3>
 <p>One of the most useful pipe combinations is <code>group_by()</code> and <code>count()</code>.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb80-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb80-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ## # Groups:   type [2]
 ##   type             n
@@ -407,9 +407,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1 conventional  9126
 ## 2 organic       9123</code></pre>
 <p>We can add more variables to the <code>group_by()</code> function.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb82-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb82-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb92-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>()</a></code></pre></div>
 <pre><code>## # A tibble: 108 x 3
 ## # Groups:   region, type [108]
 ##    region              type             n
@@ -429,9 +429,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="group-by-summarise" class="section level3">
 <h3><span class="header-section-number">3.5.2</span> Group by + summarise</h3>
 <p>We can also use the <code>summarise()</code> function after <code>group_by()</code>. Inside <code>summarise()</code> you can use other functions such as <code>sum()</code>.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 108 x 3
 ## # Groups:   region [54]
 ##    region              type         total_volume
@@ -448,10 +448,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 Boston              organic          2373547.
 ## # … with 98 more rows</code></pre>
 <p>Let’s add another pipe and arrange the results by <code>total_volume</code>.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(total_volume)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb96-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(total_volume)</a></code></pre></div>
 <pre><code>## # A tibble: 54 x 2
 ##    region           total_volume
 ##    &lt;chr&gt;                   &lt;dbl&gt;
@@ -471,10 +471,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="mutate" class="section level2">
 <h2><span class="header-section-number">3.6</span> Mutate</h2>
 <p>You can use <code>mutate()</code> to add a new column to your data.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb88-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb88-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_type_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb88-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(total_type_volume))</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb98-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb98-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_type_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb98-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(total_type_volume))</a></code></pre></div>
 <pre><code>## # A tibble: 108 x 4
 ## # Groups:   region [54]
 ##    region              type         total_type_volume total_volume
@@ -495,12 +495,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Use <code>group_by()</code>, <code>summarise()</code>, and <code>mutate()</code> to print out the volume percentage of <em>conventional</em> and <em>organic</em> avocado types per region. (hint: add a new variable inside <code>mutate()</code> that is the result of total_type_volume divided by total_volume)</p>
 </div>
 <p>We’ve been just printing our results to our console. Let’s save the results are a new data frame. When assigning your <code>group_by()</code> results to a new object, make sure to add <code>ungroup()</code> as the last pipe (this will save you headaches in the future).</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">volume_type_region &lt;-<span class="st"> </span>avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb90-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_type_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(total_type_volume),</a>
-<a class="sourceLine" id="cb90-5" data-line-number="5">         <span class="dt">type_percentage =</span> total_type_volume<span class="op">/</span>total_volume) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb90-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">volume_type_region &lt;-<span class="st"> </span>avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb100-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(region, type) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_type_volume =</span> <span class="kw">sum</span>(<span class="st">`</span><span class="dt">Total Volume</span><span class="st">`</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total_volume =</span> <span class="kw">sum</span>(total_type_volume),</a>
+<a class="sourceLine" id="cb100-5" data-line-number="5">         <span class="dt">type_percentage =</span> total_type_volume<span class="op">/</span>total_volume) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb100-6" data-line-number="6"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
 <div id="challenge" class="challenge">
 <p>CHALLENGE #1</p>
 <ol style="list-style-type: decimal">
@@ -516,8 +516,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="filter-your-data" class="section level2">
 <h2><span class="header-section-number">3.7</span> Filter your data</h2>
 <p>One of the “regions” in our data is <code>TotalUS</code> which is not really a specific region, but the sum of all the other regions. To calculate averages per year, for example, we need to filter our the <code>TotalUS</code> region.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(region <span class="op">!=</span><span class="st"> &#39;TotalUS&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(region <span class="op">!=</span><span class="st"> &#39;TotalUS&#39;</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 17,911 x 14
 ##       X1 Date       AveragePrice `Total Volume` `4046` `4225` `4770`
 ##    &lt;dbl&gt; &lt;date&gt;            &lt;dbl&gt;          &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
@@ -543,10 +543,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.8</span> Conditionally mutate your data</h2>
 <p>You can use the <code>if_else()</code> function inside <code>mutate()</code> to create a new variable that is conditional on an existing variable in your data frame.</p>
 <p>Let’s create a new column in our data frame, indicating whether the average price per avocado is higher than $1.50.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">avocado_data &lt;-<span class="st"> </span>avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb93-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">expensive =</span> <span class="kw">if_else</span>(AveragePrice <span class="op">&gt;</span><span class="st"> </span><span class="fl">1.50</span>, <span class="dv">1</span>, <span class="dv">0</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">avocado_data &lt;-<span class="st"> </span>avocado_data <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">expensive =</span> <span class="kw">if_else</span>(AveragePrice <span class="op">&gt;</span><span class="st"> </span><span class="fl">1.50</span>, <span class="dv">1</span>, <span class="dv">0</span>))</a></code></pre></div>
 <p>Now we can calculate the percentage of expensive avocados by using the <code>mean()</code> function on our new <code>expensive</code> variable.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">mean</span>(avocado_data<span class="op">$</span>expensive)</a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1"><span class="kw">mean</span>(avocado_data<span class="op">$</span>expensive)</a></code></pre></div>
 <pre><code>## [1] 0.3787605</code></pre>
 <div id="challenge" class="challenge">
 <p>CHALLENGE</p>
@@ -560,13 +560,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>4225: large Hass</p>
 <p>4770: extra large Hass</p>
 <p>First, let’s slice our data, to remove <code>Total Volume</code>.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">avocado_data_v2 &lt;-<span class="st"> </span>avocado_data <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(Date, region, <span class="st">`</span><span class="dt">4046</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4225</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4770</span><span class="st">`</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">avocado_data_v2 &lt;-<span class="st"> </span>avocado_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(Date, region, <span class="st">`</span><span class="dt">4046</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4225</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4770</span><span class="st">`</span>)</a></code></pre></div>
 <p>Inspect your data.</p>
 <p>Now, let’s pivot our data frame.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" data-line-number="1">avocado_data_longer &lt;-<span class="st"> </span>avocado_data_v2 <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb97-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">`</span><span class="dt">4046</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4225</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4770</span><span class="st">`</span>), </a>
-<a class="sourceLine" id="cb97-3" data-line-number="3">               <span class="dt">names_to =</span> <span class="st">&quot;lookup_code&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">avocado_data_longer &lt;-<span class="st"> </span>avocado_data_v2 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">`</span><span class="dt">4046</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4225</span><span class="st">`</span>, <span class="st">`</span><span class="dt">4770</span><span class="st">`</span>), </a>
+<a class="sourceLine" id="cb107-3" data-line-number="3">               <span class="dt">names_to =</span> <span class="st">&quot;lookup_code&quot;</span>)</a></code></pre></div>
 <div id="challenge" class="challenge">
 <p>CHALLENGE</p>
 <p>Summarize volume of each avocado type per region. Which region buys a larger portion of large avocados?</p>

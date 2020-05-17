@@ -118,7 +118,7 @@
 
 \title{ResBaz Arizona 2020 Intro to R}
 \author{Adriana Picoral}
-\date{2020-05-10}
+\date{2020-05-17}
 
 \begin{document}
 \maketitle
@@ -129,6 +129,8 @@
 }
 \hypertarget{before-we-start}{%
 \chapter{Before we start}\label{before-we-start}}
+
+This is a two part intro to R workshop. Part I introduces the basics of coding in R, including how to manipulate objects, use functions, and write if statements, for loops, and simple functions. Part II is based on the tidyverse package, and it covers how to load, inspect, and explore data in R. While learners at different expertise levels are welcome to attend, these workshops were designed for participants with no or little programming experience.
 
 This lesson plan was created based on many other resources that are already available online, mainly Claudia A Engel's ``Introduction to R'' bookdown available at \url{https://cengel.github.io/R-intro} and ``Programming with R'' from Software Carpentry available at \url{http://swcarpentry.github.io/r-novice-inflammation}.
 
@@ -201,7 +203,7 @@ Why create a RStudio project? RStudio projects make it easier to keep your proje
 \item
   Create a new R script
 \item
-  Save that R script as 01-basic\_operations
+  Save that R script as 01-intro\_to\_r\_part\_one
 \end{enumerate}
 
 \leavevmode\hypertarget{question}{}%
@@ -337,9 +339,22 @@ Let's now create a dataframe that contains info about my pets.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{my_pets <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{name =}\NormalTok{ my_pets_names,}\DataTypeTok{age =}\NormalTok{ my_pets_ages)}
+\CommentTok{# create dataframe}
+\NormalTok{my_pets <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{name =}\NormalTok{ my_pets_names, }\DataTypeTok{age =}\NormalTok{ my_pets_ages)}
+
+\CommentTok{# print out dataframe}
+\NormalTok{my_pets}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##     name age
+## 1  Daisy   8
+## 2 Violet   2
+## 3   Lily   6
+## 4   Iris   3
+## 5  Poppy   1
+\end{verbatim}
 
 \leavevmode\hypertarget{challenge}{}%
 CHALLENGE
@@ -507,6 +522,11 @@ You can also use comparisons to filter your dataframe
 ## [1] "Daisy"
 \end{verbatim}
 
+\leavevmode\hypertarget{challenge}{}%
+CHALLENGE
+
+Print out a list of pet names that are older than 3.
+
 \hypertarget{adding-new-variables-i.e.-columns-to-your-dataframe}{%
 \section{Adding new variables (i.e., columns) to your dataframe}\label{adding-new-variables-i.e.-columns-to-your-dataframe}}
 
@@ -516,9 +536,22 @@ Let's add a third column with the pets' ages in human years. For that, we are go
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{# create new column called human_years}
 \NormalTok{my_pets}\OperatorTok{$}\NormalTok{human_years <-}\StringTok{ }\NormalTok{my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{*}\StringTok{ }\DecValTok{4}
+
+\CommentTok{# print dataframe}
+\NormalTok{my_pets}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##     name age human_years
+## 1  Daisy   8          32
+## 2 Violet   2           8
+## 3   Lily   6          24
+## 4   Iris   3          12
+## 5  Poppy   1           4
+\end{verbatim}
 
 \leavevmode\hypertarget{question}{}%
 Inspect the new \texttt{my\_pets} dataframe. What dimensions does it have now? How could you get a list of just the human years values in the data frame?
@@ -553,7 +586,7 @@ What other functions can/do you think/know of?
 \hypertarget{for-loops}{%
 \section{For loops}\label{for-loops}}
 
-Besides implementing operations on an entire column (e.g., \texttt{my\_pets\$age} * 4 multiplies each value in the \texttt{age} column of \texttt{my\_pets} dataframe by 4), you can loop through each element in your dataframe column using a for loop.
+Besides implementing operations on an entire column (e.g., \texttt{my\_pets\$age\ *\ 4} multiplies each value in the \texttt{age} column of \texttt{my\_pets} dataframe by 4), you can loop through each element in your dataframe column using a for loop.
 
 There are two ways of writing a for loop in R.
 
@@ -592,9 +625,14 @@ There are two ways of writing a for loop in R.
 \leavevmode\hypertarget{challenge}{}%
 CHALLENGE
 
-Write a \texttt{for} loop to print each pets' name and age. You can use the function \texttt{paste()} to combined the three variables into one line.
+Write a \texttt{for} loop to print each pets' name and age. You can use the function \texttt{paste()} to combined the two variables into one line.
 
 Remember you can enter \texttt{?paste} in your console to get information on how to use this function.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\leavevmode\hypertarget{question}{}%
+Take a moment to look around your IDE once again. What objects do you have in your environment?
 
 \hypertarget{if-blocks}{%
 \section{If blocks}\label{if-blocks}}
@@ -610,6 +648,26 @@ Maybe calculating a pet's age in human years is more complex than just multiplyi
 \item
   And after that, each human year would be approximately five years for a dog.
 \end{itemize}
+
+Let's first figure out all the if statements we need for this
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{this_dogs_age <-}\StringTok{ }\NormalTok{my_pets}\OperatorTok{$}\NormalTok{age[}\DecValTok{1}\NormalTok{]}
+
+\NormalTok{this_dogs_human_age <-}\StringTok{ }\DecValTok{15}
+
+\ControlFlowTok{if}\NormalTok{ (this_dogs_age }\OperatorTok{>=}\StringTok{ }\DecValTok{2}\NormalTok{) \{}
+\NormalTok{  this_dogs_human_age <-}\StringTok{ }\NormalTok{this_dogs_human_age }\OperatorTok{+}\StringTok{ }\DecValTok{9}
+\NormalTok{\}}
+
+\ControlFlowTok{if}\NormalTok{ (this_dogs_age }\OperatorTok{>=}\DecValTok{3}\NormalTok{) \{}
+\NormalTok{  this_dogs_human_age <-}\StringTok{ }\NormalTok{this_dogs_human_age }\OperatorTok{+}\StringTok{ }\NormalTok{((this_dogs_age }\OperatorTok{-}\StringTok{ }\DecValTok{2}\NormalTok{) }\OperatorTok{*}\StringTok{ }\DecValTok{5}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Now, let's create a for loop to calculate human age for every pet.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -634,8 +692,20 @@ Maybe calculating a pet's age in human years is more complex than just multiplyi
   \CommentTok{# add the final calculation to the dataframe}
 \NormalTok{  my_pets}\OperatorTok{$}\NormalTok{human_years2[i] <-}\StringTok{ }\NormalTok{this_dogs_human_years}
 \NormalTok{\}}
+
+\CommentTok{# print dataframe}
+\NormalTok{my_pets}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+##     name age human_years human_years2
+## 1  Daisy   8          32           54
+## 2 Violet   2           8           24
+## 3   Lily   6          24           44
+## 4   Iris   3          12           29
+## 5  Poppy   1           4           15
+\end{verbatim}
 
 \hypertarget{functions}{%
 \section{Functions}\label{functions}}
@@ -713,18 +783,46 @@ Read and run the code below that provides some info on our \texttt{my\_pets} dat
 \CommentTok{# print name of oldest pet}
 \CommentTok{## get max age}
 \NormalTok{max_age <-}\StringTok{ }\KeywordTok{max}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age)}
-
-\CommentTok{## get index of max_age}
-\NormalTok{which_max_age <-}\StringTok{ }\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\NormalTok{max_age)}
-
-\CommentTok{## print info for which_max_age}
-\NormalTok{oldest_pet <-}\StringTok{ }\KeywordTok{paste}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{name[which_max_age], }\StringTok{'is the oldest pet.'}\NormalTok{)}
-\KeywordTok{print}\NormalTok{(oldest_pet)}
+\NormalTok{max_age}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Daisy is the oldest pet."
+## [1] 8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## get index of max_age}
+\NormalTok{row_max_age <-}\StringTok{ }\KeywordTok{which}\NormalTok{(my_pets}\OperatorTok{$}\NormalTok{age }\OperatorTok{==}\StringTok{ }\NormalTok{max_age)}
+\NormalTok{row_max_age}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{## print info for oldest pet}
+\NormalTok{oldest_pet <-}\StringTok{ }\NormalTok{my_pets}\OperatorTok{$}\NormalTok{name[row_max_age]}
+\NormalTok{oldest_pet}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(oldest_pet, }\StringTok{'is the oldest pet'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Daisy is the oldest pet"
 \end{verbatim}
 
 \leavevmode\hypertarget{challenge}{}%

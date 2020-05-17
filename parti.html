@@ -24,7 +24,7 @@
 <meta name="author" content="Adriana Picoral" />
 
 
-<meta name="date" content="2020-05-10" />
+<meta name="date" content="2020-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -196,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li>Start a new R project</li>
 <li>Create a new R script</li>
-<li>Save that R script as 01-basic_operations</li>
+<li>Save that R script as 01-intro_to_r_part_one</li>
 </ol>
 <div id="question" class="question">
 <p>Take a moment to look around your IDE. What are the main panes on the RStudio interface. What are the 4 main areas of the interface? Can you guess what each area is for?</p>
@@ -256,7 +256,17 @@ Multiply <code>daisys_age</code> by 4 and save the results in another object cal
 <p>We will now create a vector of strings or characters that holds my imaginary pets’ names (we have to be careful to keep the same order then the <code>my_pets_ages</code> vector).</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">my_pets_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;Daisy&#39;</span>, <span class="st">&#39;Violet&#39;</span>, <span class="st">&#39;Lily&#39;</span>, <span class="st">&#39;Iris&#39;</span>, <span class="st">&#39;Poppy&#39;</span>)</a></code></pre></div>
 <p>Let’s now create a dataframe that contains info about my pets.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">my_pets &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> my_pets_names,<span class="dt">age =</span> my_pets_ages)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># create dataframe</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">my_pets &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> my_pets_names, <span class="dt">age =</span> my_pets_ages)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co"># print out dataframe</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">my_pets</a></code></pre></div>
+<pre><code>##     name age
+## 1  Daisy   8
+## 2 Violet   2
+## 3   Lily   6
+## 4   Iris   3
+## 5  Poppy   1</code></pre>
 <div id="challenge" class="challenge">
 <p>CHALLENGE</p>
 <p>There’s a number of functions you can run on dataframes. Try running the following functions on <code>my_pets</code>:</p>
@@ -273,46 +283,60 @@ Multiply <code>daisys_age</code> by 4 and save the results in another object cal
 <h2><span class="header-section-number">2.4</span> Slicing you dataframe</h2>
 <p>There are different ways you can slice or subset your dataframe.</p>
 <p>You can use indices for rows and columns.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">my_pets[<span class="dv">1</span>,]</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">my_pets[<span class="dv">1</span>,]</a></code></pre></div>
 <pre><code>##    name age
 ## 1 Daisy   8</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">my_pets[, <span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">my_pets[, <span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;  &quot;Violet&quot; &quot;Lily&quot;   &quot;Iris&quot;   &quot;Poppy&quot;</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">my_pets[<span class="dv">1</span>, <span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">my_pets[<span class="dv">1</span>, <span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;</code></pre>
 <p>You can use a column name or a row name instead of an index.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">my_pets[, <span class="st">&#39;age&#39;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">my_pets[, <span class="st">&#39;age&#39;</span>]</a></code></pre></div>
 <pre><code>## [1] 8 2 6 3 1</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">my_pets[<span class="st">&#39;1&#39;</span>, ]</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">my_pets[<span class="st">&#39;1&#39;</span>, ]</a></code></pre></div>
 <pre><code>##    name age
 ## 1 Daisy   8</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">my_pets[<span class="st">&#39;1&#39;</span>, <span class="st">&#39;age&#39;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">my_pets[<span class="st">&#39;1&#39;</span>, <span class="st">&#39;age&#39;</span>]</a></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>Or you can use <code>$</code> to retrieve values from a column.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">my_pets<span class="op">$</span>age</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">my_pets<span class="op">$</span>age</a></code></pre></div>
 <pre><code>## [1] 8 2 6 3 1</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">my_pets<span class="op">$</span>age[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">my_pets<span class="op">$</span>age[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p>You can also use comparisons to filter your dataframe</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="co"># get index with which() function</span></a>
-<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1"><span class="co"># get index with which() function</span></a>
+<a class="sourceLine" id="cb32-2" data-line-number="2"><span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># use which() inside dataframe indexing my_pets[row_number, column_number]</span></a>
-<a class="sourceLine" id="cb33-2" data-line-number="2">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>),]</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># use which() inside dataframe indexing my_pets[row_number, column_number]</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>),]</a></code></pre></div>
 <pre><code>##    name age
 ## 1 Daisy   8</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>), <span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>), <span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>), <span class="st">&#39;name&#39;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>), <span class="st">&#39;name&#39;</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;</code></pre>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>),]<span class="op">$</span>name</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">my_pets[<span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">8</span>),]<span class="op">$</span>name</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;</code></pre>
+<div id="challenge" class="challenge">
+<p>CHALLENGE</p>
+<p>Print out a list of pet names that are older than 3.</p>
+</div>
 </div>
 <div id="adding-new-variables-i.e.-columns-to-your-dataframe" class="section level2">
 <h2><span class="header-section-number">2.5</span> Adding new variables (i.e., columns) to your dataframe</h2>
 <p>So far the <code>my_pets</code> dataframe has two columns: name and age.</p>
 <p>Let’s add a third column with the pets’ ages in human years. For that, we are going to use <code>$</code> on with a variable (or column) name that does not exist in our dataframe yet. We will then assign to this variable the value in the <code>age</code> column multiplied by 4.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">my_pets<span class="op">$</span>human_years &lt;-<span class="st"> </span>my_pets<span class="op">$</span>age <span class="op">*</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="co"># create new column called human_years</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">my_pets<span class="op">$</span>human_years &lt;-<span class="st"> </span>my_pets<span class="op">$</span>age <span class="op">*</span><span class="st"> </span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb42-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb42-4" data-line-number="4"><span class="co"># print dataframe</span></a>
+<a class="sourceLine" id="cb42-5" data-line-number="5">my_pets</a></code></pre></div>
+<pre><code>##     name age human_years
+## 1  Daisy   8          32
+## 2 Violet   2           8
+## 3   Lily   6          24
+## 4   Iris   3          12
+## 5  Poppy   1           4</code></pre>
 <div id="question" class="question">
 <p>Inspect the new <code>my_pets</code> dataframe. What dimensions does it have now? How could you get a list of just the human years values in the data frame?</p>
 </div>
@@ -336,19 +360,19 @@ Multiply <code>daisys_age</code> by 4 and save the results in another object cal
 </div>
 <div id="for-loops" class="section level2">
 <h2><span class="header-section-number">2.7</span> For loops</h2>
-<p>Besides implementing operations on an entire column (e.g., <code>my_pets$age</code> * 4 multiplies each value in the <code>age</code> column of <code>my_pets</code> dataframe by 4), you can loop through each element in your dataframe column using a for loop.</p>
+<p>Besides implementing operations on an entire column (e.g., <code>my_pets$age * 4</code> multiplies each value in the <code>age</code> column of <code>my_pets</code> dataframe by 4), you can loop through each element in your dataframe column using a for loop.</p>
 <p>There are two ways of writing a for loop in R.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="cf">for</span> (pet <span class="cf">in</span> my_pets<span class="op">$</span>name) {</a>
-<a class="sourceLine" id="cb42-2" data-line-number="2">  <span class="kw">print</span>(pet)</a>
-<a class="sourceLine" id="cb42-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="cf">for</span> (pet <span class="cf">in</span> my_pets<span class="op">$</span>name) {</a>
+<a class="sourceLine" id="cb44-2" data-line-number="2">  <span class="kw">print</span>(pet)</a>
+<a class="sourceLine" id="cb44-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;
 ## [1] &quot;Violet&quot;
 ## [1] &quot;Lily&quot;
 ## [1] &quot;Iris&quot;
 ## [1] &quot;Poppy&quot;</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)) {</a>
-<a class="sourceLine" id="cb44-2" data-line-number="2">  <span class="kw">print</span>(my_pets<span class="op">$</span>name[i])</a>
-<a class="sourceLine" id="cb44-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)) {</a>
+<a class="sourceLine" id="cb46-2" data-line-number="2">  <span class="kw">print</span>(my_pets<span class="op">$</span>name[i])</a>
+<a class="sourceLine" id="cb46-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] &quot;Daisy&quot;
 ## [1] &quot;Violet&quot;
 ## [1] &quot;Lily&quot;
@@ -356,8 +380,12 @@ Multiply <code>daisys_age</code> by 4 and save the results in another object cal
 ## [1] &quot;Poppy&quot;</code></pre>
 <div id="challenge" class="challenge">
 <p>CHALLENGE</p>
-<p>Write a <code>for</code> loop to print each pets’ name and age. You can use the function <code>paste()</code> to combined the three variables into one line.</p>
+<p>Write a <code>for</code> loop to print each pets’ name and age. You can use the function <code>paste()</code> to combined the two variables into one line.</p>
 <p>Remember you can enter <code>?paste</code> in your console to get information on how to use this function.</p>
+</div>
+<hr />
+<div id="question" class="question">
+<p>Take a moment to look around your IDE once again. What objects do you have in your environment?</p>
 </div>
 </div>
 <div id="if-blocks" class="section level2">
@@ -368,84 +396,110 @@ Multiply <code>daisys_age</code> by 4 and save the results in another object cal
 <li>Year two for a dog equals about nine years for a human.</li>
 <li>And after that, each human year would be approximately five years for a dog.</li>
 </ul>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)) {</a>
-<a class="sourceLine" id="cb46-2" data-line-number="2">  <span class="co"># store dog i age in an object</span></a>
-<a class="sourceLine" id="cb46-3" data-line-number="3">  this_dogs_age &lt;-<span class="st"> </span>my_pets<span class="op">$</span>age[i]</a>
-<a class="sourceLine" id="cb46-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb46-5" data-line-number="5">  <span class="co"># 15 human years equals the first year of a medium-sized dog&#39;s life.</span></a>
-<a class="sourceLine" id="cb46-6" data-line-number="6">  this_dogs_human_years &lt;-<span class="st"> </span><span class="dv">15</span></a>
-<a class="sourceLine" id="cb46-7" data-line-number="7">  </a>
-<a class="sourceLine" id="cb46-8" data-line-number="8">  <span class="co"># if the pet is two years or older</span></a>
-<a class="sourceLine" id="cb46-9" data-line-number="9">  <span class="cf">if</span> (this_dogs_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb46-10" data-line-number="10">    <span class="co"># Year two for a dog equals about nine years for a human.</span></a>
-<a class="sourceLine" id="cb46-11" data-line-number="11">    this_dogs_human_years &lt;-<span class="st"> </span>this_dogs_human_years <span class="op">+</span><span class="st"> </span><span class="dv">9</span></a>
-<a class="sourceLine" id="cb46-12" data-line-number="12">    </a>
-<a class="sourceLine" id="cb46-13" data-line-number="13">    <span class="co"># And after that, each human year would be approximately five years for a dog.</span></a>
-<a class="sourceLine" id="cb46-14" data-line-number="14">    partial_dog_age &lt;-<span class="st"> </span>(this_dogs_age <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb46-15" data-line-number="15">    </a>
-<a class="sourceLine" id="cb46-16" data-line-number="16">    <span class="co"># sum up both parts</span></a>
-<a class="sourceLine" id="cb46-17" data-line-number="17">    this_dogs_human_years &lt;-<span class="st"> </span>this_dogs_human_years <span class="op">+</span><span class="st"> </span>partial_dog_age</a>
-<a class="sourceLine" id="cb46-18" data-line-number="18">  } </a>
-<a class="sourceLine" id="cb46-19" data-line-number="19">  <span class="co"># add the final calculation to the dataframe</span></a>
-<a class="sourceLine" id="cb46-20" data-line-number="20">  my_pets<span class="op">$</span>human_years2[i] &lt;-<span class="st"> </span>this_dogs_human_years</a>
-<a class="sourceLine" id="cb46-21" data-line-number="21">}</a></code></pre></div>
+<p>Let’s first figure out all the if statements we need for this</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1">this_dogs_age &lt;-<span class="st"> </span>my_pets<span class="op">$</span>age[<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">this_dogs_human_age &lt;-<span class="st"> </span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb48-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb48-5" data-line-number="5"><span class="cf">if</span> (this_dogs_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb48-6" data-line-number="6">  this_dogs_human_age &lt;-<span class="st"> </span>this_dogs_human_age <span class="op">+</span><span class="st"> </span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb48-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb48-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb48-9" data-line-number="9"><span class="cf">if</span> (this_dogs_age <span class="op">&gt;=</span><span class="dv">3</span>) {</a>
+<a class="sourceLine" id="cb48-10" data-line-number="10">  this_dogs_human_age &lt;-<span class="st"> </span>this_dogs_human_age <span class="op">+</span><span class="st"> </span>((this_dogs_age <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb48-11" data-line-number="11">}</a></code></pre></div>
+<p>Now, let’s create a for loop to calculate human age for every pet.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)) {</a>
+<a class="sourceLine" id="cb49-2" data-line-number="2">  <span class="co"># store dog i age in an object</span></a>
+<a class="sourceLine" id="cb49-3" data-line-number="3">  this_dogs_age &lt;-<span class="st"> </span>my_pets<span class="op">$</span>age[i]</a>
+<a class="sourceLine" id="cb49-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb49-5" data-line-number="5">  <span class="co"># 15 human years equals the first year of a medium-sized dog&#39;s life.</span></a>
+<a class="sourceLine" id="cb49-6" data-line-number="6">  this_dogs_human_years &lt;-<span class="st"> </span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb49-7" data-line-number="7">  </a>
+<a class="sourceLine" id="cb49-8" data-line-number="8">  <span class="co"># if the pet is two years or older</span></a>
+<a class="sourceLine" id="cb49-9" data-line-number="9">  <span class="cf">if</span> (this_dogs_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb49-10" data-line-number="10">    <span class="co"># Year two for a dog equals about nine years for a human.</span></a>
+<a class="sourceLine" id="cb49-11" data-line-number="11">    this_dogs_human_years &lt;-<span class="st"> </span>this_dogs_human_years <span class="op">+</span><span class="st"> </span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb49-12" data-line-number="12">    </a>
+<a class="sourceLine" id="cb49-13" data-line-number="13">    <span class="co"># And after that, each human year would be approximately five years for a dog.</span></a>
+<a class="sourceLine" id="cb49-14" data-line-number="14">    partial_dog_age &lt;-<span class="st"> </span>(this_dogs_age <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb49-15" data-line-number="15">    </a>
+<a class="sourceLine" id="cb49-16" data-line-number="16">    <span class="co"># sum up both parts</span></a>
+<a class="sourceLine" id="cb49-17" data-line-number="17">    this_dogs_human_years &lt;-<span class="st"> </span>this_dogs_human_years <span class="op">+</span><span class="st"> </span>partial_dog_age</a>
+<a class="sourceLine" id="cb49-18" data-line-number="18">  } </a>
+<a class="sourceLine" id="cb49-19" data-line-number="19">  <span class="co"># add the final calculation to the dataframe</span></a>
+<a class="sourceLine" id="cb49-20" data-line-number="20">  my_pets<span class="op">$</span>human_years2[i] &lt;-<span class="st"> </span>this_dogs_human_years</a>
+<a class="sourceLine" id="cb49-21" data-line-number="21">}</a>
+<a class="sourceLine" id="cb49-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb49-23" data-line-number="23"><span class="co"># print dataframe</span></a>
+<a class="sourceLine" id="cb49-24" data-line-number="24">my_pets</a></code></pre></div>
+<pre><code>##     name age human_years human_years2
+## 1  Daisy   8          32           54
+## 2 Violet   2           8           24
+## 3   Lily   6          24           44
+## 4   Iris   3          12           29
+## 5  Poppy   1           4           15</code></pre>
 </div>
 <div id="functions" class="section level2">
 <h2><span class="header-section-number">2.9</span> Functions</h2>
 <p>Functions are extremely useful to make your R code more organized and reusable.</p>
 <p>The main structure of a function is <code>object_name &lt;- function() code_here</code>,Here’s an example of a simple function.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">human_years &lt;-<span class="st"> </span><span class="cf">function</span>(pets_age) {</a>
-<a class="sourceLine" id="cb47-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb47-3" data-line-number="3">  <span class="co"># 15 human years equals the first year of a medium-sized dog&#39;s life.</span></a>
-<a class="sourceLine" id="cb47-4" data-line-number="4">  human_years &lt;-<span class="st"> </span><span class="dv">15</span></a>
-<a class="sourceLine" id="cb47-5" data-line-number="5">  </a>
-<a class="sourceLine" id="cb47-6" data-line-number="6">  <span class="co"># if the pet is two years or older</span></a>
-<a class="sourceLine" id="cb47-7" data-line-number="7">  <span class="cf">if</span> (pets_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
-<a class="sourceLine" id="cb47-8" data-line-number="8">    <span class="co"># Year two for a dog equals about nine years for a human.</span></a>
-<a class="sourceLine" id="cb47-9" data-line-number="9">    <span class="co"># And after that, each human year would be approximately five years for a dog.</span></a>
-<a class="sourceLine" id="cb47-10" data-line-number="10">    human_years &lt;-<span class="st"> </span>human_years <span class="op">+</span><span class="st"> </span><span class="dv">9</span> <span class="op">+</span><span class="st"> </span>(pets_age <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a>
-<a class="sourceLine" id="cb47-11" data-line-number="11">    </a>
-<a class="sourceLine" id="cb47-12" data-line-number="12">  } </a>
-<a class="sourceLine" id="cb47-13" data-line-number="13">  <span class="kw">return</span>(human_years)</a>
-<a class="sourceLine" id="cb47-14" data-line-number="14">}</a>
-<a class="sourceLine" id="cb47-15" data-line-number="15"></a>
-<a class="sourceLine" id="cb47-16" data-line-number="16"><span class="kw">human_years</span>(<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">human_years &lt;-<span class="st"> </span><span class="cf">function</span>(pets_age) {</a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">  <span class="co"># 15 human years equals the first year of a medium-sized dog&#39;s life.</span></a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">  human_years &lt;-<span class="st"> </span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb51-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb51-6" data-line-number="6">  <span class="co"># if the pet is two years or older</span></a>
+<a class="sourceLine" id="cb51-7" data-line-number="7">  <span class="cf">if</span> (pets_age <span class="op">&gt;=</span><span class="st"> </span><span class="dv">2</span>) {</a>
+<a class="sourceLine" id="cb51-8" data-line-number="8">    <span class="co"># Year two for a dog equals about nine years for a human.</span></a>
+<a class="sourceLine" id="cb51-9" data-line-number="9">    <span class="co"># And after that, each human year would be approximately five years for a dog.</span></a>
+<a class="sourceLine" id="cb51-10" data-line-number="10">    human_years &lt;-<span class="st"> </span>human_years <span class="op">+</span><span class="st"> </span><span class="dv">9</span> <span class="op">+</span><span class="st"> </span>(pets_age <span class="op">-</span><span class="st"> </span><span class="dv">2</span>) <span class="op">*</span><span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb51-11" data-line-number="11">    </a>
+<a class="sourceLine" id="cb51-12" data-line-number="12">  } </a>
+<a class="sourceLine" id="cb51-13" data-line-number="13">  <span class="kw">return</span>(human_years)</a>
+<a class="sourceLine" id="cb51-14" data-line-number="14">}</a>
+<a class="sourceLine" id="cb51-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb51-16" data-line-number="16"><span class="kw">human_years</span>(<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 29</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">my_pets<span class="op">$</span>human_years2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(my_pets<span class="op">$</span>age, human_years)</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">my_pets<span class="op">$</span>human_years2 &lt;-<span class="st"> </span><span class="kw">sapply</span>(my_pets<span class="op">$</span>age, human_years)</a></code></pre></div>
 <p>Read more on writing your own functions: <a href="https://nicercode.github.io/guides/functions/">Nice R Code - Functions</a></p>
 </div>
 <div id="putting-it-all-together" class="section level2">
 <h2><span class="header-section-number">2.10</span> Putting it all together</h2>
 <p>Read and run the code below that provides some info on our <code>my_pets</code> dataframe.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="co"># get number of rows for the for loop</span></a>
-<a class="sourceLine" id="cb50-2" data-line-number="2">how_many_pets &lt;-<span class="st"> </span><span class="kw">nrow</span>(my_pets)</a>
-<a class="sourceLine" id="cb50-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb50-4" data-line-number="4"><span class="co"># a for loop to print info on each pet</span></a>
-<a class="sourceLine" id="cb50-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>how_many_pets)) {</a>
-<a class="sourceLine" id="cb50-6" data-line-number="6">  <span class="co"># paste info with some prose</span></a>
-<a class="sourceLine" id="cb50-7" data-line-number="7">  info_to_print &lt;-<span class="st"> </span><span class="kw">paste</span>(my_pets<span class="op">$</span>name[i], <span class="st">&#39;is&#39;</span>,</a>
-<a class="sourceLine" id="cb50-8" data-line-number="8">                         my_pets<span class="op">$</span>age[i], </a>
-<a class="sourceLine" id="cb50-9" data-line-number="9">                         <span class="st">&#39;years old in pet years, which is equivalent to&#39;</span>,</a>
-<a class="sourceLine" id="cb50-10" data-line-number="10">                         my_pets<span class="op">$</span>human_years[i], <span class="st">&#39;human years.&#39;</span>)</a>
-<a class="sourceLine" id="cb50-11" data-line-number="11">  <span class="co"># print out the info for pet i</span></a>
-<a class="sourceLine" id="cb50-12" data-line-number="12">  <span class="kw">print</span>(info_to_print)</a>
-<a class="sourceLine" id="cb50-13" data-line-number="13">} <span class="co"># end of for loop to print info on each pet</span></a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="co"># get number of rows for the for loop</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">how_many_pets &lt;-<span class="st"> </span><span class="kw">nrow</span>(my_pets)</a>
+<a class="sourceLine" id="cb54-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4"><span class="co"># a for loop to print info on each pet</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span>how_many_pets)) {</a>
+<a class="sourceLine" id="cb54-6" data-line-number="6">  <span class="co"># paste info with some prose</span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7">  info_to_print &lt;-<span class="st"> </span><span class="kw">paste</span>(my_pets<span class="op">$</span>name[i], <span class="st">&#39;is&#39;</span>,</a>
+<a class="sourceLine" id="cb54-8" data-line-number="8">                         my_pets<span class="op">$</span>age[i], </a>
+<a class="sourceLine" id="cb54-9" data-line-number="9">                         <span class="st">&#39;years old in pet years, which is equivalent to&#39;</span>,</a>
+<a class="sourceLine" id="cb54-10" data-line-number="10">                         my_pets<span class="op">$</span>human_years[i], <span class="st">&#39;human years.&#39;</span>)</a>
+<a class="sourceLine" id="cb54-11" data-line-number="11">  <span class="co"># print out the info for pet i</span></a>
+<a class="sourceLine" id="cb54-12" data-line-number="12">  <span class="kw">print</span>(info_to_print)</a>
+<a class="sourceLine" id="cb54-13" data-line-number="13">} <span class="co"># end of for loop to print info on each pet</span></a></code></pre></div>
 <pre><code>## [1] &quot;Daisy is 8 years old in pet years, which is equivalent to 32 human years.&quot;
 ## [1] &quot;Violet is 2 years old in pet years, which is equivalent to 8 human years.&quot;
 ## [1] &quot;Lily is 6 years old in pet years, which is equivalent to 24 human years.&quot;
 ## [1] &quot;Iris is 3 years old in pet years, which is equivalent to 12 human years.&quot;
 ## [1] &quot;Poppy is 1 years old in pet years, which is equivalent to 4 human years.&quot;</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="co"># print name of oldest pet</span></a>
-<a class="sourceLine" id="cb52-2" data-line-number="2"><span class="co">## get max age</span></a>
-<a class="sourceLine" id="cb52-3" data-line-number="3">max_age &lt;-<span class="st"> </span><span class="kw">max</span>(my_pets<span class="op">$</span>age)</a>
-<a class="sourceLine" id="cb52-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb52-5" data-line-number="5"><span class="co">## get index of max_age</span></a>
-<a class="sourceLine" id="cb52-6" data-line-number="6">which_max_age &lt;-<span class="st"> </span><span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span>max_age)</a>
-<a class="sourceLine" id="cb52-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb52-8" data-line-number="8"><span class="co">## print info for which_max_age</span></a>
-<a class="sourceLine" id="cb52-9" data-line-number="9">oldest_pet &lt;-<span class="st"> </span><span class="kw">paste</span>(my_pets<span class="op">$</span>name[which_max_age], <span class="st">&#39;is the oldest pet.&#39;</span>)</a>
-<a class="sourceLine" id="cb52-10" data-line-number="10"><span class="kw">print</span>(oldest_pet)</a></code></pre></div>
-<pre><code>## [1] &quot;Daisy is the oldest pet.&quot;</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="co"># print name of oldest pet</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2"><span class="co">## get max age</span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">max_age &lt;-<span class="st"> </span><span class="kw">max</span>(my_pets<span class="op">$</span>age)</a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">max_age</a></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="co">## get index of max_age</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">row_max_age &lt;-<span class="st"> </span><span class="kw">which</span>(my_pets<span class="op">$</span>age <span class="op">==</span><span class="st"> </span>max_age)</a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">row_max_age</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="co">## print info for oldest pet</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">oldest_pet &lt;-<span class="st"> </span>my_pets<span class="op">$</span>name[row_max_age]</a>
+<a class="sourceLine" id="cb60-3" data-line-number="3">oldest_pet</a></code></pre></div>
+<pre><code>## [1] &quot;Daisy&quot;</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">paste</span>(oldest_pet, <span class="st">&#39;is the oldest pet&#39;</span>))</a></code></pre></div>
+<pre><code>## [1] &quot;Daisy is the oldest pet&quot;</code></pre>
 <div id="challenge" class="challenge">
 <p>CHALLENGE</p>
 <p>Add to the code above, to print the following information:</p>
